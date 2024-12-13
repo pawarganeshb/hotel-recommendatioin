@@ -15,9 +15,14 @@ public class HotelApp {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 	
 		System.out.println("**************Welcome To Our System***************");
 	
+=======
+
+		System.out.println("**************Welcome To  System***************");
+>>>>>>> main
 		do {
 			int choise = 0;
 			System.out.println("\n");
