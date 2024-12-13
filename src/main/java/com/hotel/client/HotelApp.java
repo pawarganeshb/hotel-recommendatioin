@@ -15,7 +15,7 @@ public class HotelApp {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-
+		System.out.println("");
 		System.out.println("**************Welcome To Our System***************");
 		do {
 			int choise = 0;
