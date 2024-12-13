@@ -17,6 +17,7 @@ public class HotelApp {
 	public static void main(String[] args) {
 		System.out.println("");
 		System.out.println("**************Welcome To Our System***************");
+		System.out.println("new data");
 		do {
 			int choise = 0;
 			System.out.println("\n");
