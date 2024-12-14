@@ -13,7 +13,6 @@ private ILoginRepo iLoginRepo=new LoginRepoImpl();
 	}
 	@Override
 	public String checkType(LoginEntity le) {
-		// TODO Auto-generated method stub
 		return iLoginRepo.checkType(le);
 	}
 

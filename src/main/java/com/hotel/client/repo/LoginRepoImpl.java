@@ -39,7 +39,6 @@ public class LoginRepoImpl extends Database_Connection implements ILoginRepo {
 			}
 			return type;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}

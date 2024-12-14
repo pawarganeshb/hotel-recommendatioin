@@ -38,7 +38,13 @@ public class HotelApp {
 				String type = iLoginService.checkType(le);
 				if (type.equals("Admin")) {
 					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
-					System.out.println("");
+					System.out.println();
+					System.out.println("1] Add State");
+					System.out.println("2] Update State");
+					System.out.println("3] Delete State");
+					System.out.println("4] View State");
+					System.out.println("5] Exit");
+					
 
 				} else {
 					System.out.println("User Not Found........");
@@ -54,7 +60,8 @@ public class HotelApp {
 				le.setPassword(password);
 				type = iLoginService.checkType(le);
 				if (type.equals("User")) {
-					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
+					System.out.println(
+							"**************Welcome " + username.toUpperCase() + type.toUpperCase() + "***************");
 				} else {
 					System.out.println("User Not Found........");
 				}
