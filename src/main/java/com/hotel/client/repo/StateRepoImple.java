@@ -33,12 +33,12 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 				StateEntity entity = new StateEntity();
 				rs.getInt(entity.getS_id());
 				rs.getInt(entity.getS_name());
-				stateEntities.add(rs);
+//				stateEntities.add(rs);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return stateEntities;
+		return null;
 	}
 
 	@Override
@@ -59,11 +59,11 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean updateState(StateEntity stateEntity) {
-		String SQL = "UPDATE states SET stateName = ? WHERE stateId = ?";
+		String SQL = "UPDATE states SET s_name = ? WHERE s_id = ?";
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setString(1, stateEntity.getS_name());
-			pst.setInt(2, stateEntity.getStateId());
+			pst.setInt(2, stateEntity.getS_id());
 			int value = pst.executeUpdate();
 			return value > 0;
 		} catch (Exception e) {
