@@ -15,7 +15,7 @@ public class HotelApp {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-	
+
 		System.out.println("**************Welcome To Our System***************");
 		do {
 			int choise = 0;
@@ -28,9 +28,36 @@ public class HotelApp {
 			choise = sc.nextInt();
 			switch (choise) {
 			case 1:
+				System.out.println("Enter your username");
+				sc.nextLine();
+				String username = sc.nextLine();
+				System.out.println("Enter your password");
+				String password = sc.nextLine();
+				le.setUsername(username);
+				le.setPassword(password);
+				String type = iLoginService.checkType(le);
+				if (type.equals("Admin")) {
+					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
+					System.out.println("");
 
+				} else {
+					System.out.println("User Not Found........");
+				}
 				break;
 			case 2:
+				System.out.println("Enter your username");
+				sc.nextLine();
+				username = sc.nextLine();
+				System.out.println("Enter your password");
+				password = sc.nextLine();
+				le.setUsername(username);
+				le.setPassword(password);
+				type = iLoginService.checkType(le);
+				if (type.equals("User")) {
+					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
+				} else {
+					System.out.println("User Not Found........");
+				}
 				break;
 			case 3:
 				loginForNewUser();
@@ -63,4 +90,5 @@ public class HotelApp {
 			System.out.println("Password Not Match or password should be greater than 4");
 		}
 	}
+
 }
