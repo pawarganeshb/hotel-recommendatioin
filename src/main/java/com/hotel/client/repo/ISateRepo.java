@@ -12,4 +12,6 @@ public interface ISateRepo {
 	public boolean deleteState(int stateId);
 
 	public boolean updateState(StateEntity stateEntity);
+	
+	public List<StateEntity> getAllStates();
 }
