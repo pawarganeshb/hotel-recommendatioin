@@ -10,35 +10,17 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean addState(StateEntity stateEntity) {
-		String SQL = "INSERT INTO states (stateName) VALUES (?)";
+		String SQL = "INSERT INTO states VALUES(?,?)";
 		try {
 			pst = con.prepareStatement(SQL);
-			pst.setString(1, stateEntity.getS_name());
+			pst.setInt(1, 0);
+			pst.setString(2, stateEntity.getS_name());
 			int value = pst.executeUpdate();
 			return value > 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-	}
-
-	@Override
-	public List<StateEntity> getStates() {
-		String SQL = "SELECT * FROM states";
-		try {
-			pst = con.prepareStatement(SQL);
-			ResultSet rs = pst.executeQuery();
-			List<StateEntity> stateEntities = null;
-			if (rs.next()) {
-				StateEntity entity = new StateEntity();
-				rs.getInt(entity.getS_id());
-				rs.getInt(entity.getS_name());
-//				stateEntities.add(rs);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
@@ -49,7 +31,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 			pst = con.prepareStatement(SQL);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				stateList.add(new StateEntity(rs.getInt("stateId"), rs.getString("stateName")));
+				stateList.add(new StateEntity(rs.getInt("s_id"), rs.getString("s_name")));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,7 +56,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean deleteState(int stateId) {
-		String SQL = "DELETE FROM states WHERE stateId = ?";
+		String SQL = "DELETE FROM states WHERE s_id = ?";
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setInt(1, stateId);
