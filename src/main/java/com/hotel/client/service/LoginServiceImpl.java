@@ -12,7 +12,7 @@ private ILoginRepo iLoginRepo=new LoginRepoImpl();
 		return iLoginRepo.isAddNewUser(entity);
 	}
 	@Override
-	public String checkType(LoginEntity le) {
+	public LoginEntity checkType(LoginEntity le) {
 		return iLoginRepo.checkType(le);
 	}
 

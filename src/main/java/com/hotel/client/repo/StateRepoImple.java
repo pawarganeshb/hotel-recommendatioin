@@ -1,16 +1,17 @@
 package com.hotel.client.repo;
 
-import com.hotel.client.config.Database_Connection;
-import com.hotel.client.entity.StateEntity;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.hotel.client.config.Database_Connection;
+import com.hotel.client.entity.StateEntity;
 
 public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean addState(StateEntity stateEntity) {
-		String SQL = "INSERT INTO states (stateName) VALUES (?)";
+		String SQL = "INSERT INTO state VALUES (0,?)";
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setString(1, stateEntity.getS_name());
@@ -22,24 +23,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		}
 	}
 
-	@Override
-	public List<StateEntity> getStates() {
-		String SQL = "SELECT * FROM states";
-		try {
-			pst = con.prepareStatement(SQL);
-			ResultSet rs = pst.executeQuery();
-			List<StateEntity> stateEntities = null;
-			if (rs.next()) {
-				StateEntity entity = new StateEntity();
-				rs.getInt(entity.getS_id());
-				rs.getInt(entity.getS_name());
-//				stateEntities.add(rs);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 
 	@Override
 	public List<StateEntity> getAllStates() {
@@ -59,7 +43,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean updateState(StateEntity stateEntity) {
-		String SQL = "UPDATE states SET s_name = ? WHERE s_id = ?";
+		String SQL = "UPDATE state SET stateName = ? WHERE stateId = ?";
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setString(1, stateEntity.getS_name());
@@ -74,7 +58,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean deleteState(int stateId) {
-		String SQL = "DELETE FROM states WHERE stateId = ?";
+		String SQL = "DELETE FROM state WHERE stateId = ?";
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setInt(1, stateId);

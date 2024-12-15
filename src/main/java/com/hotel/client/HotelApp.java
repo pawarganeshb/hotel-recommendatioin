@@ -35,8 +35,8 @@ public class HotelApp {
 				String password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-				String type = iLoginService.checkType(le);
-				if (type.equals("Admin")) {
+				le= iLoginService.checkType(le);
+				if (le.getType().equals("Admin")) {
 					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
 					System.out.println();
 					System.out.println("1] Add State");
@@ -57,10 +57,10 @@ public class HotelApp {
 				password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-				type = iLoginService.checkType(le);
-				if (type.equals("User")) {
+				le= iLoginService.checkType(le);
+				if (le.getType().equals("Admin")) {
 					System.out.println(
-							"**************Welcome " + username.toUpperCase() + type.toUpperCase() + "***************");
+							"**************Welcome " + username.toUpperCase() + le.getName() + "***************");
 				} else {
 					System.out.println("User Not Found........");
 				}
@@ -81,17 +81,31 @@ public class HotelApp {
 
 	public static void loginForNewUser() {
 		sc.nextLine();
-		System.out.println("\nEnter username");
+		System.out.println("\nEnter the name of user");
+		String name =sc.nextLine();
+		System.out.println("Enter the email of user");
+		String email=sc.nextLine();
+		System.out.println("Enter the contact number");
+		String conatct=sc.nextLine();
+		System.out.println("Enter username");
 		String username = sc.nextLine();
 		System.out.println("Enter the password");
 		String password = sc.nextLine();
 		System.out.println("Re-Enter the password");
 		String rePassword = sc.nextLine();
-		if (password.equals(rePassword) && password.length() > 4) {
-			le.setUsername(username);
-			le.setPassword(password);
-			String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!" : "Unable to registration!";
-			System.out.println(msg);
+		if (password.equals(rePassword) && password.length() > 4 ) {
+			if (conatct.length()==10) {
+				le.setConatct_no(conatct);
+				le.setEmail(email);
+				le.setName(name);
+				le.setUsername(username);
+				le.setPassword(password);
+				String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!"
+						: "Unable to registration!";
+				System.out.println(msg);
+			}else {
+				System.out.println("contact number must have 10 numbers");
+			}
 		} else {
 			System.out.println("Password Not Match or password should be greater than 4");
 		}

@@ -1,13 +1,13 @@
-package com.hotel.client.repo;
+package com.hotel.client.service;
 
 import java.util.List;
 
 import com.hotel.client.entity.StateEntity;
 
-
-public interface ISateRepo {
+public interface IStateServices {
 	public boolean addState(StateEntity stateEntity);
 
+	
 
 	public boolean deleteState(int stateId);
 
