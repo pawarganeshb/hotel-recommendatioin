@@ -1,16 +1,20 @@
 package com.hotel.client.repo;
 
-import com.hotel.client.config.Database_Connection;
-import com.hotel.client.entity.StateEntity;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import com.hotel.client.config.Database_Connection;
+import com.hotel.client.entity.StateEntity;
 
 public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean addState(StateEntity stateEntity) {
+<<<<<<< HEAD
 		String SQL = "INSERT INTO states VALUES(?,?)";
+=======
+		String SQL = "INSERT INTO state VALUES (0,?)";
+>>>>>>> project/hotel
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setInt(1, 0);
@@ -23,9 +27,14 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> project/hotel
 	@Override
 	public List<StateEntity> getAllStates() {
-		String SQL = "SELECT * FROM states";
+		String SQL = "SELECT * FROM state";
 		List<StateEntity> stateList = new ArrayList<>();
 		try {
 			pst = con.prepareStatement(SQL);
@@ -41,7 +50,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean updateState(StateEntity stateEntity) {
-		String SQL = "UPDATE states SET s_name = ? WHERE s_id = ?";
+		String SQL = "UPDATE state SET stateName = ? WHERE stateId = ?";
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setString(1, stateEntity.getS_name());
@@ -56,7 +65,11 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean deleteState(int stateId) {
+<<<<<<< HEAD
 		String SQL = "DELETE FROM states WHERE s_id = ?";
+=======
+		String SQL = "DELETE FROM state WHERE stateId = ?";
+>>>>>>> project/hotel
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setInt(1, stateId);
@@ -65,6 +78,27 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+
+
+	@Override
+	public List<StateEntity> searchState(String stateName) {
+		String SQL = "SELECT * FROM state where stateName=?";
+		List<StateEntity> stateList = new ArrayList<>();
+		try {
+			pst = con.prepareStatement(SQL);
+			pst.setString(1, stateName);
+			 rs = pst.executeQuery();
+			while (rs.next()) {
+				stateList.add(new StateEntity(rs.getInt("stateId"), rs.getString("stateName")));
+			}
+			
+			return stateList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

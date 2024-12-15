@@ -12,8 +12,7 @@ private ILoginRepo iLoginRepo=new LoginRepoImpl();
 		return iLoginRepo.isAddNewUser(entity);
 	}
 	@Override
-	public String checkType(LoginEntity le) {
-		// TODO Auto-generated method stub
+	public LoginEntity checkType(LoginEntity le) {
 		return iLoginRepo.checkType(le);
 	}
 
