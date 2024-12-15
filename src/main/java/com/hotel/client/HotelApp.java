@@ -44,7 +44,6 @@ public class HotelApp {
 					System.out.println("3] Delete State");
 					System.out.println("4] View State");
 					System.out.println("5] Exit");
-					
 
 				} else {
 					System.out.println("User Not Found........");
