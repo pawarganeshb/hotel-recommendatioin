@@ -30,7 +30,15 @@ public class StateServices implements IStateServices{
 	@Override
 	public List<StateEntity> getAllStates() {
 		// TODO Auto-generated method stub
-		return null;
+		return stateRepoImple.getAllStates();
+	}
+
+
+
+	@Override
+	public List<StateEntity> searchState(String stateName) {
+		// TODO Auto-generated method stub
+		return stateRepoImple.searchState(stateName);
 	}
 
 }

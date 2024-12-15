@@ -2,16 +2,22 @@ package com.hotel.client;
 
 import java.util.Scanner;
 
+import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
+import com.hotel.client.entity.StateEntity;
 import com.hotel.client.service.ILoginService;
+import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.LoginServiceImpl;
+import com.hotel.client.service.StateServices;
 
 public class HotelApp {
 	static int count = 0;
 	// entity class object
 	static LoginEntity le = new LoginEntity();
+	static StateEntity se = new StateEntity();
 	// Service object
 	static ILoginService iLoginService = new LoginServiceImpl();
+	static IStateServices iStateServices = new StateServices();
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -35,15 +41,33 @@ public class HotelApp {
 				String password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-				le= iLoginService.checkType(le);
+				le = iLoginService.checkType(le);
 				if (le.getType().equals("Admin")) {
-					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
+					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 					System.out.println();
-					System.out.println("1] Add State");
-					System.out.println("2] Update State");
-					System.out.println("3] Delete State");
-					System.out.println("4] View State");
-					System.out.println("5] Exit");
+					int choice=0;
+					do {
+						System.out.println("1)State Operation");
+						System.out.println("2)City operation");
+						System.out.println("3)Area operation");
+						System.out.println("4)Exit");
+						System.out.println("Enter your Choice");
+						choice = sc.nextInt();
+						switch (choice) {
+						case 1:
+							StateOperation so=new StateOperation();
+							break;
+						case 2:
+							break;
+						case 3:
+							break;
+						case 4:
+							break;
+						default:
+							System.out.println("Enter the valid operation...");
+							break;
+						}
+					} while (choice!=4);
 
 				} else {
 					System.out.println("User Not Found........");
@@ -57,7 +81,7 @@ public class HotelApp {
 				password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-				le= iLoginService.checkType(le);
+				le = iLoginService.checkType(le);
 				if (le.getType().equals("Admin")) {
 					System.out.println(
 							"**************Welcome " + username.toUpperCase() + le.getName() + "***************");
@@ -82,19 +106,19 @@ public class HotelApp {
 	public static void loginForNewUser() {
 		sc.nextLine();
 		System.out.println("\nEnter the name of user");
-		String name =sc.nextLine();
+		String name = sc.nextLine();
 		System.out.println("Enter the email of user");
-		String email=sc.nextLine();
+		String email = sc.nextLine();
 		System.out.println("Enter the contact number");
-		String conatct=sc.nextLine();
+		String conatct = sc.nextLine();
 		System.out.println("Enter username");
 		String username = sc.nextLine();
 		System.out.println("Enter the password");
 		String password = sc.nextLine();
 		System.out.println("Re-Enter the password");
 		String rePassword = sc.nextLine();
-		if (password.equals(rePassword) && password.length() > 4 ) {
-			if (conatct.length()==10) {
+		if (password.equals(rePassword) && password.length() > 4) {
+			if (conatct.length() == 10) {
 				le.setConatct_no(conatct);
 				le.setEmail(email);
 				le.setName(name);
@@ -103,7 +127,7 @@ public class HotelApp {
 				String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!"
 						: "Unable to registration!";
 				System.out.println(msg);
-			}else {
+			} else {
 				System.out.println("contact number must have 10 numbers");
 			}
 		} else {
@@ -111,4 +135,5 @@ public class HotelApp {
 		}
 	}
 
+	
 }

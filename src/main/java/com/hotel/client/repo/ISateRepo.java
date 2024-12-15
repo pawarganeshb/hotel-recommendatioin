@@ -14,4 +14,6 @@ public interface ISateRepo {
 	public boolean updateState(StateEntity stateEntity);
 	
 	public List<StateEntity> getAllStates();
+	
+	public List<StateEntity> searchState(String stateName);
 }

@@ -3,7 +3,6 @@ package com.hotel.client.repo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.hotel.client.config.Database_Connection;
 import com.hotel.client.entity.StateEntity;
 
@@ -27,7 +26,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public List<StateEntity> getAllStates() {
-		String SQL = "SELECT * FROM states";
+		String SQL = "SELECT * FROM state";
 		List<StateEntity> stateList = new ArrayList<>();
 		try {
 			pst = con.prepareStatement(SQL);
@@ -67,6 +66,27 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+
+
+	@Override
+	public List<StateEntity> searchState(String stateName) {
+		String SQL = "SELECT * FROM state where stateName=?";
+		List<StateEntity> stateList = new ArrayList<>();
+		try {
+			pst = con.prepareStatement(SQL);
+			pst.setString(1, stateName);
+			 rs = pst.executeQuery();
+			while (rs.next()) {
+				stateList.add(new StateEntity(rs.getInt("stateId"), rs.getString("stateName")));
+			}
+			
+			return stateList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }
