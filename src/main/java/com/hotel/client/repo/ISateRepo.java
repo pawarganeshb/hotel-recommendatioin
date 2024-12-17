@@ -8,10 +8,7 @@ import com.hotel.client.entity.StateEntity;
 public interface ISateRepo {
 	public boolean addState(StateEntity stateEntity);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> project/hotel
 	public boolean deleteState(int stateId);
 
 	public boolean updateState(StateEntity stateEntity);

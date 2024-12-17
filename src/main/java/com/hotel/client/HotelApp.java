@@ -40,9 +40,10 @@ public class HotelApp {
 				String password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-				String type = iLoginService.checkType(le);
-				if (type.equals("Admin")) {
-					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
+				LoginEntity type = iLoginService.checkType(le);
+			
+				if (type.getType().equals("Admin")) {
+					System.out.println("**************Welcome " + type.getName().toUpperCase() + "***************");
 					do {
 						System.out.println("1] Add State");
 						System.out.println("2] Delete State");

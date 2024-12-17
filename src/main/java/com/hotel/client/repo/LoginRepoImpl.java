@@ -28,7 +28,6 @@ public class LoginRepoImpl extends Database_Connection implements ILoginRepo {
 
 	@Override
 	public LoginEntity checkType(LoginEntity le) {
-		// TODO Auto-generated method stub
 		try {
 			pst=con.prepareStatement("select Name,userType from user where username=? and password=?");
 			pst.setString(1, le.getUsername());
