@@ -1,4 +1,5 @@
 package com.hotel.client.repo;
 
-public interface IStateRepo {
+public interface ICityRepo {
+
 }

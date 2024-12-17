@@ -2,16 +2,23 @@ package com.hotel.client;
 
 import java.util.Scanner;
 
+import com.hotel.client.AdminOperation.AccommodationOperation;
+import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
+import com.hotel.client.entity.StateEntity;
 import com.hotel.client.service.ILoginService;
+import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.LoginServiceImpl;
+import com.hotel.client.service.StateServices;
 
 public class HotelApp {
 	static int count = 0;
 	// entity class object
 	static LoginEntity le = new LoginEntity();
+	static StateEntity se = new StateEntity();
 	// Service object
 	static ILoginService iLoginService = new LoginServiceImpl();
+	static IStateServices iStateServices = new StateServices();
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -35,15 +42,38 @@ public class HotelApp {
 				String password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-				String type = iLoginService.checkType(le);
-				if (type.equals("Admin")) {
-					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
+				le = iLoginService.checkType(le);
+				if (le.getType().equals("Admin")) {
+					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 					System.out.println();
-					System.out.println("1] Add State");
-					System.out.println("2] Update State");
-					System.out.println("3] Delete State");
-					System.out.println("4] View State");
-					System.out.println("5] Exit");
+					int choice = 0;
+					do {
+						System.out.println("1)State Operation");
+						System.out.println("2)City operation");
+						System.out.println("3)Area operation");
+						System.out.println("4)Accommodation Operation");
+						System.out.println("5)Exit");
+						System.out.println("Enter your Choice");
+						choice = sc.nextInt();
+						switch (choice) {
+						case 1:
+							new StateOperation();
+							break;
+						case 2:
+							break;
+						case 3:
+							break;
+						case 4:
+							new AccommodationOperation();
+							break;
+						case 5:
+							System.exit(0);
+							break;
+						default:
+							System.out.println("Enter the valid operation...");
+							break;
+						}
+					} while (choice != 4);
 
 				} else {
 					System.out.println("User Not Found........");
@@ -57,10 +87,10 @@ public class HotelApp {
 				password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-				type = iLoginService.checkType(le);
-				if (type.equals("User")) {
+				le = iLoginService.checkType(le);
+				if (le.getType().equals("Admin")) {
 					System.out.println(
-							"**************Welcome " + username.toUpperCase() + type.toUpperCase() + "***************");
+							"**************Welcome " + username.toUpperCase() + le.getName() + "***************");
 				} else {
 					System.out.println("User Not Found........");
 				}
@@ -81,17 +111,31 @@ public class HotelApp {
 
 	public static void loginForNewUser() {
 		sc.nextLine();
-		System.out.println("\nEnter username");
+		System.out.println("\nEnter the name of user");
+		String name = sc.nextLine();
+		System.out.println("Enter the email of user");
+		String email = sc.nextLine();
+		System.out.println("Enter the contact number");
+		String conatct = sc.nextLine();
+		System.out.println("Enter username");
 		String username = sc.nextLine();
 		System.out.println("Enter the password");
 		String password = sc.nextLine();
 		System.out.println("Re-Enter the password");
 		String rePassword = sc.nextLine();
 		if (password.equals(rePassword) && password.length() > 4) {
-			le.setUsername(username);
-			le.setPassword(password);
-			String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!" : "Unable to registration!";
-			System.out.println(msg);
+			if (conatct.length() == 10) {
+				le.setConatct_no(conatct);
+				le.setEmail(email);
+				le.setName(name);
+				le.setUsername(username);
+				le.setPassword(password);
+				String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!"
+						: "Unable to registration!";
+				System.out.println(msg);
+			} else {
+				System.out.println("contact number must have 10 numbers");
+			}
 		} else {
 			System.out.println("Password Not Match or password should be greater than 4");
 		}
