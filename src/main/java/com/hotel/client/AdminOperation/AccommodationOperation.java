@@ -20,7 +20,7 @@ public class AccommodationOperation {
 
 			System.out.println("Enter your choice: ");
 			int choice = sc.nextInt();
-			sc.nextLine(); 
+			sc.nextLine();
 
 			switch (choice) {
 			case 1:

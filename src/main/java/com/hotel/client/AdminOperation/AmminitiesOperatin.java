@@ -1,6 +1,5 @@
 package com.hotel.client.AdminOperation;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 import com.hotel.client.entity.AmminitiesEntity;
