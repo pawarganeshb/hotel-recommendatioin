@@ -1,6 +1,7 @@
 package com.hotel.client.repo;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.hotel.client.config.Database_Connection;
@@ -89,4 +90,29 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 			return null;
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+
+
+
+	@Override
+	public int getSatteIdByName(String statename) {
+		try {
+			pst=con.prepareStatement("select stateId from state where stateName=?");
+			pst.setString(1, statename);
+			rs=pst.executeQuery();
+			int stateid=0;
+			while (rs.next()) {
+				stateid=rs.getInt(1);
+			}
+			return stateid;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
+}
+>>>>>>> project/hotel

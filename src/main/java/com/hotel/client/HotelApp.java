@@ -2,6 +2,7 @@ package com.hotel.client;
 
 import java.util.Scanner;
 
+import com.hotel.client.AdminOperation.DistrictOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
 import com.hotel.client.entity.StateEntity;
@@ -48,16 +49,17 @@ public class HotelApp {
 					int choice=0;
 					do {
 						System.out.println("1)State Operation");
-						System.out.println("2)City operation");
-						System.out.println("3)Area operation");
+						System.out.println("2)District operation");
+						System.out.println("3)City operation");
 						System.out.println("4)Exit");
 						System.out.println("Enter your Choice");
 						choice = sc.nextInt();
 						switch (choice) {
 						case 1:
-							StateOperation so=new StateOperation();
+							new StateOperation();
 							break;
 						case 2:
+							new DistrictOperation();
 							break;
 						case 3:
 							break;
@@ -130,7 +132,7 @@ public class HotelApp {
 					System.out.println(msg);
 				}
 				else {
-					System.out.println("Mishmatch the password or length is greater than 4");
+					System.err.println("Mishmatch the password or length is greater than 4");
 				}
 			}
 			else {
