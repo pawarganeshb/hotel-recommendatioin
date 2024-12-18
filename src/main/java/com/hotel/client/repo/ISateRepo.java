@@ -16,4 +16,5 @@ public interface ISateRepo {
 	public List<StateEntity> getAllStates();
 	
 	public List<StateEntity> searchState(String stateName);
+	public int getSatteIdByName(String statename);
 }
