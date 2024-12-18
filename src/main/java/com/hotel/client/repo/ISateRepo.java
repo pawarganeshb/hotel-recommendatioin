@@ -16,9 +16,5 @@ public interface ISateRepo {
 	public List<StateEntity> getAllStates();
 	
 	public List<StateEntity> searchState(String stateName);
-<<<<<<< HEAD
-}
-=======
 	public int getSatteIdByName(String statename);
 }
->>>>>>> project/hotel

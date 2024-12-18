@@ -90,9 +90,6 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 			return null;
 		}
 	}
-<<<<<<< HEAD
-}
-=======
 
 
 
@@ -115,4 +112,3 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		
 	}
 }
->>>>>>> project/hotel
