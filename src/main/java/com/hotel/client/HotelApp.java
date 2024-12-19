@@ -40,7 +40,7 @@ public class HotelApp {
 			switch (choise) {
 			case 1:
 				System.out.println("Enter your username");
-				
+				System.out.println("refrelct the effect");
 				String username = sc.nextLine();
 				System.out.println("Enter your password");
 				String password = sc.nextLine();
