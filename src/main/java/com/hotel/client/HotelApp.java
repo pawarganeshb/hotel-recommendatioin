@@ -56,7 +56,8 @@ public class HotelApp {
 						System.out.println("3)City operation");
 						System.out.println("4)Accommodation operation");
 						System.out.println("5)Aminity Operation");
-						System.out.println("6)Exit");
+						System.out.println("6)User operation");
+						System.out.println("7)Exit");
 						System.out.println("Enter your Choice");
 						choice = sc.nextInt();
 						switch (choice) {
@@ -82,11 +83,13 @@ public class HotelApp {
 						case 6:
 							
 							break;
+						case 7:
+							break;
 						default:
 							System.out.println("Enter the valid operation...");
 							break;
 						}
-					} while (choice!=6);
+					} while (choice!=7);
 
 				} else {
 					System.out.println("User Not Found........");

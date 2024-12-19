@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CityEntity extends StateEntity {
+public class CityEntity extends DistrictEntity {
 	private int cityId;
 	private String cityName;
 }
