@@ -2,14 +2,6 @@ package com.hotel.client;
 
 import java.util.Scanner;
 
-<<<<<<< HEAD
-import com.hotel.client.entity.LoginEntity;
-import com.hotel.client.entity.StateEntity;
-import com.hotel.client.service.ILoginService;
-import com.hotel.client.service.IStateService;
-import com.hotel.client.service.LoginServiceImpl;
-import com.hotel.client.service.StateServiceImp;
-=======
 import com.hotel.client.AdminOperation.DistrictOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
@@ -19,28 +11,20 @@ import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.LoginServiceImpl;
 import com.hotel.client.service.StateServices;
 
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 
 public class HotelApp {
 	static int count = 0;
 	// entity class object
 	static LoginEntity le = new LoginEntity();
+	static StateEntity se = new StateEntity();
 	// Service object
 	static ILoginService iLoginService = new LoginServiceImpl();
-<<<<<<< HEAD
-	static IStateService iStateService = new StateServiceImp();
-=======
 	static IStateServices iStateServices = new StateServices();
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
 		System.out.println("**************Welcome To Our System***************");
-<<<<<<< HEAD
-
-=======
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 		do {
 			int choise = 0;
 			System.out.println("\n");
@@ -59,61 +43,6 @@ public class HotelApp {
 				String password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-<<<<<<< HEAD
-				LoginEntity type = iLoginService.checkType(le);
-			
-				if (type.getType().equals("Admin")) {
-					System.out.println("**************Welcome " + type.getName().toUpperCase() + "***************");
-					do {
-						System.out.println("1] Add State");
-						System.out.println("2] Delete State");
-						System.out.println("3] Update State");
-						System.out.println("4] View State");
-						System.out.println("5] Exit");
-						System.out.println("Enter you choice: ");
-						int choice = sc.nextInt();
-						switch (choice) {
-						case 1:
-							System.out.println("Enter the state:");
-							sc.nextLine();
-							String state = sc.nextLine();
-							StateEntity entity = new StateEntity(null, state);
-							boolean state1 = iStateService.addState(entity);
-							System.out.println(state1 ? "State is added." : "Unable to added state.");
-							break;
-						case 2:
-							iStateService.getAllStates().forEach(System.out::println);
-							System.out.println("Enter state ID: ");
-							int id = sc.nextInt();
-							System.out.println(iStateService.deleteState(id) ? "State has been deleted"
-									: "Unable to delete state.");
-							break;
-						case 3:
-							iStateService.getAllStates().forEach(System.out::println);
-							System.out.println("Enter the id: ");
-							int s_id = sc.nextInt();
-							System.out.println("Enter the state: ");
-							sc.nextLine();
-							String s_name = sc.nextLine();
-							StateEntity entity1 = new StateEntity(s_id, s_name);
-							System.out
-									.println(iStateService.updateState(entity1) ? "State has been updated successfully!"
-											: "Unable to update.");
-
-							break;
-						case 4:
-							iStateService.getAllStates().forEach(System.out::println);
-							break;
-						case 5:
-							System.out.println("Exit..");
-							System.exit(0);
-							break;
-						default:
-							System.out.println("Invalid Operation");
-							break;
-						}
-					} while (true);
-=======
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("Admin")) {
 					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
@@ -142,7 +71,6 @@ public class HotelApp {
 							break;
 						}
 					} while (choice!=4);
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 
 				} else {
 					System.out.println("User Not Found........");
@@ -156,16 +84,10 @@ public class HotelApp {
 				password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
-<<<<<<< HEAD
-				type = iLoginService.checkType(le);
-				if (type.equals("User")) {
-					System.out.println("**************Welcome " + username.toUpperCase() + "***************");
-=======
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("User")) {
 					System.out.println(
 							"**************Welcome " +  le.getName().toUpperCase() + "***************");
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 				} else {
 					System.out.println("User Not Found........");
 				}
@@ -185,22 +107,6 @@ public class HotelApp {
 	}
 
 	public static void loginForNewUser() {
-<<<<<<< HEAD
-		sc.nextLine();
-		System.out.println("\nEnter username");
-		String username = sc.nextLine();
-		System.out.println("Enter the password");
-		String password = sc.nextLine();
-		System.out.println("Re-Enter the password");
-		String rePassword = sc.nextLine();
-		if (password.equals(rePassword) && password.length() > 4) {
-			le.setUsername(username);
-			le.setPassword(password);
-			String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!" : "Unable to registration!";
-			System.out.println(msg);
-		} else {
-			System.out.println("Password Not Match or password should be greater than 4");
-=======
 		
 		System.out.println("\nEnter the name of user");
 		String name = sc.nextLine();
@@ -235,14 +141,9 @@ public class HotelApp {
 			}
 		}else {
 			System.err.println("Enter the valid email that end @gmail.com");
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 		}
 			
 	}
 
-<<<<<<< HEAD
-}
-=======
 	
 }
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb

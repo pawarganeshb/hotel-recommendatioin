@@ -11,13 +11,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean addState(StateEntity stateEntity) {
-<<<<<<< HEAD
-
 		String SQL = "INSERT INTO state VALUES (0,?)";
-
-=======
-		String SQL = "INSERT INTO state VALUES (0,?)";
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setString(1, stateEntity.getS_name());
@@ -29,11 +23,8 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	
 
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 	@Override
 	public List<StateEntity> getAllStates() {
 		String SQL = "SELECT * FROM state";
@@ -67,13 +58,7 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean deleteState(int stateId) {
-<<<<<<< HEAD
-
 		String SQL = "DELETE FROM state WHERE stateId = ?";
-
-=======
-		String SQL = "DELETE FROM state WHERE stateId = ?";
->>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setInt(1, stateId);
@@ -85,6 +70,8 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		}
 	}
 
+
+
 	@Override
 	public List<StateEntity> searchState(String stateName) {
 		String SQL = "SELECT * FROM state where stateName=?";
@@ -92,11 +79,11 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setString(1, stateName);
-			rs = pst.executeQuery();
+			 rs = pst.executeQuery();
 			while (rs.next()) {
 				stateList.add(new StateEntity(rs.getInt("stateId"), rs.getString("stateName")));
 			}
-
+			
 			return stateList;
 		} catch (Exception e) {
 			e.printStackTrace();
