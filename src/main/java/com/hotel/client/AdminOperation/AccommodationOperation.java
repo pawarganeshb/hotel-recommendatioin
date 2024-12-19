@@ -13,6 +13,7 @@ public class AccommodationOperation {
 	public AccommodationOperation() {
 		int choice=0;
 		do {
+			System.out.println();
 			System.out.println("1) Add Accommodation.");
 			System.out.println("2) Show Accommodation.");
 			System.out.println("3) Update Accommodation.");
