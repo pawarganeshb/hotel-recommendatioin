@@ -6,7 +6,7 @@ import com.hotel.client.entity.AmminitiesEntity;
 
 public interface IAmminitiesService {
 	public boolean addAmminity(AmminitiesEntity amminitiesEntity);
-gi
+
 	public List<AmminitiesEntity> showAmmnity();
 
 	public boolean updateAmminity(AmminitiesEntity amminitiesEntity);

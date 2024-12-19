@@ -2,8 +2,7 @@ package com.hotel.client;
 
 import java.util.Scanner;
 
-import com.hotel.client.AdminOperation.AccommodationOperation;
-import com.hotel.client.AdminOperation.AmminitiesOperatin;
+import com.hotel.client.AdminOperation.DistrictOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
 import com.hotel.client.entity.StateEntity;
@@ -11,6 +10,7 @@ import com.hotel.client.service.ILoginService;
 import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.LoginServiceImpl;
 import com.hotel.client.service.StateServices;
+
 
 public class HotelApp {
 	static int count = 0;
@@ -34,10 +34,10 @@ public class HotelApp {
 			System.out.println("4)Exit");
 			System.out.println("\nEnter your choice");
 			choise = sc.nextInt();
+			sc.nextLine();
 			switch (choise) {
 			case 1:
 				System.out.println("Enter your username");
-				sc.nextLine();
 				String username = sc.nextLine();
 				System.out.println("Enter your password");
 				String password = sc.nextLine();
@@ -47,14 +47,12 @@ public class HotelApp {
 				if (le.getType().equals("Admin")) {
 					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 					System.out.println();
-					int choice = 0;
+					int choice=0;
 					do {
 						System.out.println("1)State Operation");
-						System.out.println("2)City operation");
-						System.out.println("3)Area operation");
-						System.out.println("4)Accommodation Operation");
-						System.out.println("5)Amminities Operation");
-						System.out.println("6)Exit");
+						System.out.println("2)District operation");
+						System.out.println("3)City operation");
+						System.out.println("4)Exit");
 						System.out.println("Enter your Choice");
 						choice = sc.nextInt();
 						switch (choice) {
@@ -62,23 +60,17 @@ public class HotelApp {
 							new StateOperation();
 							break;
 						case 2:
+							new DistrictOperation();
 							break;
 						case 3:
 							break;
 						case 4:
-							new AccommodationOperation();
-							break;
-						case 5:
-							new AmminitiesOperatin();
-							break;
-						case 6:
-							System.exit(0);
 							break;
 						default:
-							System.out.println("Invalid Operation...");
+							System.out.println("Enter the valid operation...");
 							break;
 						}
-					} while (choice!=6);
+					} while (choice!=4);
 
 				} else {
 					System.out.println("User Not Found........");
@@ -86,16 +78,16 @@ public class HotelApp {
 				break;
 			case 2:
 				System.out.println("Enter your username");
-				sc.nextLine();
+				
 				username = sc.nextLine();
 				System.out.println("Enter your password");
 				password = sc.nextLine();
 				le.setUsername(username);
 				le.setPassword(password);
 				le = iLoginService.checkType(le);
-				if (le.getType().equals("Admin")) {
+				if (le.getType().equals("User")) {
 					System.out.println(
-							"**************Welcome " + username.toUpperCase() + le.getName() + "***************");
+							"**************Welcome " +  le.getName().toUpperCase() + "***************");
 				} else {
 					System.out.println("User Not Found........");
 				}
@@ -115,35 +107,43 @@ public class HotelApp {
 	}
 
 	public static void loginForNewUser() {
-		sc.nextLine();
+		
 		System.out.println("\nEnter the name of user");
 		String name = sc.nextLine();
 		System.out.println("Enter the email of user");
 		String email = sc.nextLine();
 		System.out.println("Enter the contact number");
-		String conatct = sc.nextLine();
-		System.out.println("Enter username");
-		String username = sc.nextLine();
-		System.out.println("Enter the password");
-		String password = sc.nextLine();
-		System.out.println("Re-Enter the password");
-		String rePassword = sc.nextLine();
-		if (password.equals(rePassword) && password.length() > 4) {
-			if (conatct.length() == 10) {
-				le.setConatct_no(conatct);
-				le.setEmail(email);
-				le.setName(name);
-				le.setUsername(username);
-				le.setPassword(password);
-				String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!"
-						: "Unable to registration!";
-				System.out.println(msg);
-			} else {
-				System.out.println("contact number must have 10 numbers");
+		if (email.toLowerCase().endsWith("@gmail.com")) {
+			String conatct = sc.nextLine();
+			System.out.println("Enter username");
+			if (conatct.length()==10) {
+				String username = sc.nextLine();
+				System.out.println("Enter the password");
+				String password = sc.nextLine();
+				System.out.println("Re-Enter the password");
+				String rePassword = sc.nextLine();
+				if (password.equals(rePassword) && password.length()>4) {
+					le.setConatct_no(conatct);
+					le.setEmail(email);
+					le.setName(name);
+					le.setUsername(username);
+					le.setPassword(password);
+					String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!"
+							: "Unable to registration!";
+					System.out.println(msg);
+				}
+				else {
+					System.err.println("Mishmatch the password or length is greater than 4");
+				}
 			}
-		} else {
-			System.out.println("Password Not Match or password should be greater than 4");
+			else {
+				System.err.println("Enter the valid contact number");
+			}
+		}else {
+			System.err.println("Enter the valid email that end @gmail.com");
 		}
+			
 	}
 
+	
 }
