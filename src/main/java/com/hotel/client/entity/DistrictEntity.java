@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DistrictEntity extends StateEntity {
 	
-	
 	private int distId;
 	private String distName;
 }

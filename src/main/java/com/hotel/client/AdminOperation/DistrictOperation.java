@@ -15,9 +15,9 @@ public class DistrictOperation {
 	static DistrictServiceImpl districtService = new DistrictServiceImpl();
 	static DistrictEntity de = new DistrictEntity();
 	static Scanner sc = new Scanner(System.in);
-	
+
 	public DistrictOperation() {
-		
+
 		int choice = 0;
 		do {
 			System.out.println("");
@@ -100,9 +100,7 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-
 		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
-
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
@@ -125,7 +123,7 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()));
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
@@ -152,10 +150,10 @@ public class DistrictOperation {
 				System.out.println(flag);
 				if (flag) {
 					flag = districtService.CheckDistricAndStatePresent(de);
-//					System.out.println(flag);
+					System.out.println(flag);
 					if (flag) {
 						flag = districtService.insertDataInJoin(de);
-//						System.out.println(flag);
+						System.out.println(flag);
 						if (flag) {
 							System.out.println("Data is inserted...");
 						} else {
@@ -242,7 +240,7 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()+"\t\t"+t.getS_name()));
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
@@ -261,7 +259,7 @@ public class DistrictOperation {
 				distId=districtService.getDistIdByName(distName);
 			if (distId!=0) {
 				int count=districtService.checkDistCount(de);
-//				System.out.println(count);
+				System.out.println(count);
 				if (count>1) {
 					if (districtService.delteFromJoin(de)) {
 						System.out.println("data is delted");
