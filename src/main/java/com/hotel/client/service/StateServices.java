@@ -41,4 +41,12 @@ public class StateServices implements IStateServices{
 		return stateRepoImple.searchState(stateName);
 	}
 
+
+
+	@Override
+	public int getSatteIdByName(String statename) {
+		// TODO Auto-generated method stub
+		return stateRepoImple.getSatteIdByName(statename);
+	}
+
 }

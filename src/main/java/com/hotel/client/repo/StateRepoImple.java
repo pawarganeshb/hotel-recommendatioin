@@ -1,6 +1,7 @@
 package com.hotel.client.repo;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.hotel.client.config.Database_Connection;
@@ -10,9 +11,13 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean addState(StateEntity stateEntity) {
+<<<<<<< HEAD
 
 		String SQL = "INSERT INTO state VALUES (0,?)";
 
+=======
+		String SQL = "INSERT INTO state VALUES (0,?)";
+>>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setString(1, stateEntity.getS_name());
@@ -24,6 +29,11 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 	@Override
 	public List<StateEntity> getAllStates() {
 		String SQL = "SELECT * FROM state";
@@ -57,9 +67,13 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public boolean deleteState(int stateId) {
+<<<<<<< HEAD
 
 		String SQL = "DELETE FROM state WHERE stateId = ?";
 
+=======
+		String SQL = "DELETE FROM state WHERE stateId = ?";
+>>>>>>> b82bdf69ff35da49708d6c888c97e56546192ebb
 		try {
 			pst = con.prepareStatement(SQL);
 			pst.setInt(1, stateId);
@@ -88,5 +102,26 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+
+
+	@Override
+	public int getSatteIdByName(String statename) {
+		try {
+			pst=con.prepareStatement("select stateId from state where stateName=?");
+			pst.setString(1, statename);
+			rs=pst.executeQuery();
+			int stateid=0;
+			while (rs.next()) {
+				stateid=rs.getInt(1);
+			}
+			return stateid;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 }
