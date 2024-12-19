@@ -15,9 +15,9 @@ public class DistrictOperation {
 	static DistrictServiceImpl districtService = new DistrictServiceImpl();
 	static DistrictEntity de = new DistrictEntity();
 	static Scanner sc = new Scanner(System.in);
-
+	
 	public DistrictOperation() {
-
+		
 		int choice = 0;
 		do {
 			System.out.println("");
@@ -100,7 +100,11 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
+<<<<<<< HEAD
 		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
+=======
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t"+t.getS_name()));
+>>>>>>> c9ad66d53c04df903a6e9934aba7f30d58b5a02a
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
