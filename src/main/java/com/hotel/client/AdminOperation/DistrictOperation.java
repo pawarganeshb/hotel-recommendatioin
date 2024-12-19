@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.StateEntity;
 import com.hotel.client.service.DistrictServiceImpl;
 import com.hotel.client.service.IStateServices;

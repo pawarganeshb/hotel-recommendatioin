@@ -6,9 +6,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DistrictEntity extends StateEntity{
-
-private int distId;
-private String distName;
-
+public class DistrictEntity extends StateEntity {
+	
+	
+	private int distId;
+	private String distName;
 }
+
