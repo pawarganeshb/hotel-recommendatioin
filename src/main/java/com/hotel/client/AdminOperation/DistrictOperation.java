@@ -36,7 +36,7 @@ public class DistrictOperation {
 				al = iStateServices.getAllStates();
 				System.out.println("*****************STATES********************");
 				System.out.println("State_id\t State_Name");
-				al.forEach((t) -> System.out.println(t.getS_name()));
+				al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 				System.out.println("Enter the state where you add district");
 				String statename = sc.nextLine();
@@ -100,7 +100,7 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()));
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
@@ -110,7 +110,7 @@ public class DistrictOperation {
 			dist = districtService.showAllDistrcitWhitState(stateId);
 			System.out.println("*****************District********************");
 			System.out.println("District_id\t District_Name");
-			dist.forEach((t) -> System.out.println(t.getDistId() + "\t" + t.getDistName()));
+			dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
 		}
 		else {
 			System.err.println("you enter wrong state name");
@@ -123,7 +123,7 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()));
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
@@ -204,7 +204,7 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()));
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
@@ -214,7 +214,7 @@ public class DistrictOperation {
 			dist = districtService.showAllDistrcitWhitState(stateId);
 			System.out.println("*****************District********************");
 			System.out.println("District_id\t District_Name");
-			dist.forEach((t) -> System.out.println(t.getDistId() + "\t" + t.getDistName()));
+			dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
 			System.out.println("Enter the district name to find");
 			String distName=sc.nextLine();
 			de.setDistName(distName);
@@ -240,7 +240,7 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()));
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
@@ -250,7 +250,7 @@ public class DistrictOperation {
 			dist = districtService.showAllDistrcitWhitState(stateId);
 			System.out.println("*****************District********************");
 			System.out.println("District_id\t District_Name");
-			dist.forEach((t) -> System.out.println(t.getDistId() + "\t" + t.getDistName()));
+			dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
 			System.out.println("enter the district to delete");
 			String distName=sc.nextLine();
 			de.setDistName(distName);
