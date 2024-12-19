@@ -23,9 +23,9 @@ public class DistrictOperation {
 			System.out.println("");
 			System.out.println("1)Add District");
 			System.out.println("2)Show All district");
-			System.out.println("3)Update State");
-			System.out.println("4)Delete State");
-			System.out.println("5)Search State");
+			System.out.println("3)Update district");
+			System.out.println("4)Delete district");
+			System.out.println("5)Search district");
 			System.out.println("6)Exit");
 			System.out.println("Enter your choice");
 			choice = sc.nextInt();
