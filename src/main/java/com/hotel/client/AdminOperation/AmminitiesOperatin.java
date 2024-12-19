@@ -12,6 +12,7 @@ public class AmminitiesOperatin {
 	static IAmminitiesService ammnityService = new AmminitiesServiceImple();
 
 	public AmminitiesOperatin() {
+		int choice=0;
 		do {
 			System.out.println("1) Add Amminity");
 			System.out.println("2) Show Amminity");
@@ -20,7 +21,7 @@ public class AmminitiesOperatin {
 			System.out.println("5) Exit From Amminity Operation");
 
 			System.out.print("Enter your choice: ");
-			int choice = scanner.nextInt();
+			choice = scanner.nextInt();
 			scanner.nextLine();
 
 			switch (choice) {
@@ -42,13 +43,13 @@ public class AmminitiesOperatin {
 
 			case 5:
 				System.out.println("Exiting from Amminity Operations...");
-				scanner.close();
-				System.exit(0);
+				
+				
 
 			default:
 				System.out.println("Invalid choice! Please select a valid option.");
 			}
-		} while (true);
+		} while (choice!=5);
 	}
 
 	private void addAmminity() {
@@ -76,7 +77,7 @@ public class AmminitiesOperatin {
 		showAmminities();
 		System.out.print("Enter Amminity ID to Update: ");
 		int updateId = scanner.nextInt();
-
+		scanner.nextLine();
 		System.out.println("Enter new Amminity: ");
 		String amminityName = scanner.nextLine();
 

@@ -11,6 +11,7 @@ public class AccommodationOperation {
 	static IAccommodationService accommodationService = new AccommodationServiceImple();
 
 	public AccommodationOperation() {
+		int choice=0;
 		do {
 			System.out.println("1) Add Accommodation.");
 			System.out.println("2) Show Accommodation.");
@@ -19,7 +20,7 @@ public class AccommodationOperation {
 			System.out.println("5) Exit.");
 
 			System.out.println("Enter your choice: ");
-			int choice = sc.nextInt();
+			 choice = sc.nextInt();
 			sc.nextLine();
 
 			switch (choice) {
@@ -37,13 +38,13 @@ public class AccommodationOperation {
 				break;
 			case 5:
 				System.out.println("Exiting...");
-				System.exit(0);
+				
 				break;
 			default:
 				System.out.println("Invalid Choice!");
 				break;
 			}
-		} while (true);
+		} while (choice!=5);
 	}
 
 	private void addAccommodation() {
@@ -62,7 +63,9 @@ public class AccommodationOperation {
 		showAccommodation();
 		System.out.println("Enter New Accommodation Type: ");
 		String newType = sc.nextLine();
-		AccommodationEntity updatedEntity = new AccommodationEntity(null, newType);
+		System.out.println("Enter That ID: ");
+		int id = sc.nextInt();
+		AccommodationEntity updatedEntity = new AccommodationEntity(id, newType);
 		System.out
 				.println(accommodationService.updateAccommodation(updatedEntity) ? "Accommodation Updated Successfully!"
 						: "Unable to Update Accommodation");

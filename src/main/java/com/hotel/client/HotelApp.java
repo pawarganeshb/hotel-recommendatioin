@@ -2,6 +2,9 @@ package com.hotel.client;
 
 import java.util.Scanner;
 
+import com.hotel.client.AdminOperation.AccommodationOperation;
+import com.hotel.client.AdminOperation.AmminitiesOperatin;
+import com.hotel.client.AdminOperation.CityOperation;
 import com.hotel.client.AdminOperation.DistrictOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
@@ -52,25 +55,39 @@ public class HotelApp {
 						System.out.println("1)State Operation");
 						System.out.println("2)District operation");
 						System.out.println("3)City operation");
-						System.out.println("4)Exit");
+						System.out.println("4)Accommodation operation");
+						System.out.println("5)Aminity Operation");
+						System.out.println("6)Exit");
 						System.out.println("Enter your Choice");
 						choice = sc.nextInt();
 						switch (choice) {
 						case 1:
 							new StateOperation();
+							System.out.println();
 							break;
 						case 2:
 							new DistrictOperation();
+							System.out.println();
 							break;
 						case 3:
+							
 							break;
 						case 4:
+							new AccommodationOperation();
+							System.out.println();
+							break;
+						case 5:
+							new AmminitiesOperatin();
+							System.out.println();
+							break;
+						case 6:
+							
 							break;
 						default:
 							System.out.println("Enter the valid operation...");
 							break;
 						}
-					} while (choice!=4);
+					} while (choice!=6);
 
 				} else {
 					System.out.println("User Not Found........");
