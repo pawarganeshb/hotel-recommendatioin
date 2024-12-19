@@ -84,6 +84,7 @@ public class HotelApp {
 							
 							break;
 						case 7:
+							
 							break;
 						default:
 							System.out.println("Enter the valid operation...");
