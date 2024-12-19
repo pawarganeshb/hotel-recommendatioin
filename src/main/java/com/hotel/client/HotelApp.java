@@ -40,6 +40,7 @@ public class HotelApp {
 			switch (choise) {
 			case 1:
 				System.out.println("Enter your username");
+				System.out.println("soame changes mad to se what happend");
 				String username = sc.nextLine();
 				System.out.println("Enter your password");
 				String password = sc.nextLine();
