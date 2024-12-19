@@ -93,7 +93,9 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 
 
-	@Override
+	
+
+
 	public int getSatteIdByName(String statename) {
 		try {
 			pst=con.prepareStatement("select stateId from state where stateName=?");
@@ -109,6 +111,5 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 			e.printStackTrace();
 			return 0;
 		}
-		
 	}
 }
