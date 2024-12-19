@@ -84,7 +84,7 @@ public class HotelApp {
 							
 							break;
 						case 7:
-							System.out.println("why worikin");
+							
 							break;
 						default:
 							System.out.println("Enter the valid operation...");
