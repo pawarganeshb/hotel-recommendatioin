@@ -57,7 +57,8 @@ public class AccommodationOperation {
 	}
 
 	private void showAccommodation() {
-		accommodationService.showAccommodation().forEach(System.out::println);
+		System.out.println("********************Accommodarion**************************");
+		accommodationService.showAccommodation().forEach((t)->System.out.println(t.getAccommodationID()+"\t"+t.getTypeOfAccommodation()));
 	}
 
 	private void updateAccommodation() {

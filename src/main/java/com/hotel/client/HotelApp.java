@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.hotel.client.AdminOperation.AccommodationOperation;
 import com.hotel.client.AdminOperation.AmminitiesOperatin;
-import com.hotel.client.AdminOperation.CityOperation;
 import com.hotel.client.AdminOperation.DistrictOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
