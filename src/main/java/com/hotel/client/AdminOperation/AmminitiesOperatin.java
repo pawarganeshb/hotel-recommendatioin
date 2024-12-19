@@ -69,7 +69,8 @@ public class AmminitiesOperatin {
 		if (ammnityService.showAmmnity().isEmpty()) {
 			System.out.println("No Available Amminity!");
 		} else {
-			ammnityService.showAmmnity().forEach(System.out::println);
+			System.out.println("**************Amminity**********************");
+			ammnityService.showAmmnity().forEach((t)->System.out.println(t.getAminitiesID()+"\t"+t.getAmminitiesName()+"\t"+t.getAmmnitiesPrice()));
 		}
 	}
 
