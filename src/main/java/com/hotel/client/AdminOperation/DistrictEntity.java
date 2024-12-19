@@ -1,4 +1,4 @@
-package com.hotel.client.entity;
+package com.hotel.client.AdminOperation;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DistrictEntity extends StateEntity {
+public class DistrictEntity {
 	
 	
 	private int distId;
