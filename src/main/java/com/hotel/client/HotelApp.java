@@ -11,6 +11,7 @@ import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.LoginServiceImpl;
 import com.hotel.client.service.StateServices;
 
+
 public class HotelApp {
 	static int count = 0;
 	// entity class object

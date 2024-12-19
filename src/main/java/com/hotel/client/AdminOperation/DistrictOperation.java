@@ -150,10 +150,10 @@ public class DistrictOperation {
 				System.out.println(flag);
 				if (flag) {
 					flag = districtService.CheckDistricAndStatePresent(de);
-					System.out.println(flag);
+//					System.out.println(flag);
 					if (flag) {
 						flag = districtService.insertDataInJoin(de);
-						System.out.println(flag);
+//						System.out.println(flag);
 						if (flag) {
 							System.out.println("Data is inserted...");
 						} else {
@@ -259,7 +259,7 @@ public class DistrictOperation {
 				distId=districtService.getDistIdByName(distName);
 			if (distId!=0) {
 				int count=districtService.checkDistCount(de);
-				System.out.println(count);
+//				System.out.println(count);
 				if (count>1) {
 					if (districtService.delteFromJoin(de)) {
 						System.out.println("data is delted");
