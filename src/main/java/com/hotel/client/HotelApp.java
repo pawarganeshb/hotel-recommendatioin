@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.hotel.client.AdminOperation.AccommodationOperation;
 import com.hotel.client.AdminOperation.AmminitiesOperatin;
-import com.hotel.client.AdminOperation.CityOperation;
 import com.hotel.client.AdminOperation.DistrictOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
@@ -41,6 +40,7 @@ public class HotelApp {
 			switch (choise) {
 			case 1:
 				System.out.println("Enter your username");
+				System.out.println("refrelct the effect");
 				String username = sc.nextLine();
 				System.out.println("Enter your password");
 				String password = sc.nextLine();
@@ -57,7 +57,8 @@ public class HotelApp {
 						System.out.println("3)City operation");
 						System.out.println("4)Accommodation operation");
 						System.out.println("5)Aminity Operation");
-						System.out.println("6)Exit");
+						System.out.println("6)User operation");
+						System.out.println("7)Exit");
 						System.out.println("Enter your Choice");
 						choice = sc.nextInt();
 						switch (choice) {
@@ -83,11 +84,14 @@ public class HotelApp {
 						case 6:
 							
 							break;
+						case 7:
+							
+							break;
 						default:
 							System.out.println("Enter the valid operation...");
 							break;
 						}
-					} while (choice!=6);
+					} while (choice!=7);
 
 				} else {
 					System.out.println("User Not Found........");

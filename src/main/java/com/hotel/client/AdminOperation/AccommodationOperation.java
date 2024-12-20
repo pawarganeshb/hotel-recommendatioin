@@ -13,6 +13,7 @@ public class AccommodationOperation {
 	public AccommodationOperation() {
 		int choice=0;
 		do {
+			System.out.println();
 			System.out.println("1) Add Accommodation.");
 			System.out.println("2) Show Accommodation.");
 			System.out.println("3) Update Accommodation.");
@@ -56,7 +57,8 @@ public class AccommodationOperation {
 	}
 
 	private void showAccommodation() {
-		accommodationService.showAccommodation().forEach(System.out::println);
+		System.out.println("********************Accommodarion**************************");
+		accommodationService.showAccommodation().forEach((t)->System.out.println(t.getAccommodationID()+"\t"+t.getTypeOfAccommodation()));
 	}
 
 	private void updateAccommodation() {
