@@ -143,7 +143,7 @@ public class CityOperation {
 				
 				List<CityEntity> cities=new ArrayList<CityEntity>();
 				cities=cs.showAllCities(ce);
-				if (cities!=null) {
+				if (cities.size()!=0) {
 					System.out.println("***************Cities****************");
 					System.out.println("city_id \t city_Name");
 					cities.forEach((t)->System.out.println(t.getCityId()+"\t\t"+t.getCityName()));
