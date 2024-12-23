@@ -77,4 +77,21 @@ public class AmminityRepoImple extends Database_Connection implements IAmminityR
 		}
 	}
 
+	@Override
+	public List<AmminitiesEntity> search(String name) {
+		try {
+			pst=con.prepareStatement("select * from aminities where am_name like ?");
+			pst.setString(1, "%"+name+"%");
+			rs=pst.executeQuery();
+			List<AmminitiesEntity> al=new ArrayList<AmminitiesEntity>();
+			while (rs.next()) {
+				al.add(new AmminitiesEntity(rs.getInt(1),rs.getString(2),rs.getDouble(3)));
+			}
+			return al;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+
 }

@@ -29,4 +29,10 @@ public class AmminitiesServiceImple implements IAmminitiesService {
 		return amminityRepo.deleteAmminity(deleteId);
 	}
 
+	@Override
+	public List<AmminitiesEntity> search(String name) {
+		// TODO Auto-generated method stub
+		return amminityRepo.search(name);
+	}
+
 }

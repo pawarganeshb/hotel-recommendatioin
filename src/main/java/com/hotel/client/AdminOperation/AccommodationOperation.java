@@ -1,5 +1,7 @@
 package com.hotel.client.AdminOperation;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.hotel.client.entity.AccommodationEntity;
@@ -18,7 +20,8 @@ public class AccommodationOperation {
 			System.out.println("2) Show Accommodation.");
 			System.out.println("3) Update Accommodation.");
 			System.out.println("4) Delete Accommodation.");
-			System.out.println("5) Exit.");
+			System.out.println("5) Search Accommodation.");
+			System.out.println("6) Exit.");
 
 			System.out.println("Enter your choice: ");
 			 choice = sc.nextInt();
@@ -38,6 +41,9 @@ public class AccommodationOperation {
 				deleteAccommodation();
 				break;
 			case 5:
+				serchAccommodation();
+				break;
+			case 6:
 				System.out.println("Exiting...");
 				
 				break;
@@ -45,7 +51,7 @@ public class AccommodationOperation {
 				System.out.println("Invalid Choice!");
 				break;
 			}
-		} while (choice!=5);
+		} while (choice!=6);
 	}
 
 	private void addAccommodation() {
@@ -79,6 +85,19 @@ public class AccommodationOperation {
 		int id = sc.nextInt();
 		System.out.println(accommodationService.deleteAccommodation(id) ? "Accommodation Deleted Successfully!"
 				: "Unable to Delete Accommodation");
+	}
+	
+	private void serchAccommodation() {
+		showAccommodation();
+		System.out.println("Enter the Accommodation name");
+		String name=sc.nextLine();
+		List<AccommodationEntity> al=new ArrayList<AccommodationEntity>();
+		al=accommodationService.serch(name);
+		if (al.size()!=0) {
+			al.forEach((t)->System.out.println(t.getAccommodationID()+"\t"+t.getTypeOfAccommodation()));
+		} else {
+			System.out.println("data not found");
+		}
 	}
 
 }
