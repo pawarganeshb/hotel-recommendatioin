@@ -12,4 +12,6 @@ public interface IAccommodationRepo {
 	public boolean updateAccommodation(AccommodationEntity accommodationEntity);
 
 	public boolean deleteAccommodation(int id);
+	
+	public List<AccommodationEntity> serch(String name);
 }

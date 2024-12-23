@@ -12,4 +12,5 @@ public interface IAmminitiesService {
 	public boolean updateAmminity(AmminitiesEntity amminitiesEntity);
 
 	public boolean deleteAmminity(int deleteID);
+	public List<AmminitiesEntity> search(String name);
 }
