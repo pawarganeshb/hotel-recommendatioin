@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.hotel.client.AdminOperation.AccommodationOperation;
 import com.hotel.client.AdminOperation.AmminitiesOperatin;
+import com.hotel.client.AdminOperation.CityOperation;
 import com.hotel.client.AdminOperation.DistrictOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.entity.LoginEntity;
@@ -12,7 +13,6 @@ import com.hotel.client.service.ILoginService;
 import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.LoginServiceImpl;
 import com.hotel.client.service.StateServices;
-
 
 public class HotelApp {
 	static int count = 0;
@@ -40,7 +40,6 @@ public class HotelApp {
 			switch (choise) {
 			case 1:
 				System.out.println("Enter your username");
-				System.out.println("refrelct the effect");
 				String username = sc.nextLine();
 				System.out.println("Enter your password");
 				String password = sc.nextLine();
@@ -50,7 +49,7 @@ public class HotelApp {
 				if (le.getType().equals("Admin")) {
 					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 					System.out.println();
-					int choice=0;
+					int choice = 0;
 					do {
 						System.out.println("1)State Operation");
 						System.out.println("2)District operation");
@@ -71,7 +70,7 @@ public class HotelApp {
 							System.out.println();
 							break;
 						case 3:
-							
+							new CityOperation();
 							break;
 						case 4:
 							new AccommodationOperation();
@@ -82,16 +81,16 @@ public class HotelApp {
 							System.out.println();
 							break;
 						case 6:
-							
+
 							break;
 						case 7:
-							
+
 							break;
 						default:
 							System.out.println("Enter the valid operation...");
 							break;
 						}
-					} while (choice!=7);
+					} while (choice != 7);
 
 				} else {
 					System.out.println("User Not Found........");
@@ -99,7 +98,7 @@ public class HotelApp {
 				break;
 			case 2:
 				System.out.println("Enter your username");
-				
+
 				username = sc.nextLine();
 				System.out.println("Enter your password");
 				password = sc.nextLine();
@@ -107,8 +106,7 @@ public class HotelApp {
 				le.setPassword(password);
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("User")) {
-					System.out.println(
-							"**************Welcome " +  le.getName().toUpperCase() + "***************");
+					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 				} else {
 					System.out.println("User Not Found........");
 				}
@@ -128,7 +126,7 @@ public class HotelApp {
 	}
 
 	public static void loginForNewUser() {
-		
+
 		System.out.println("\nEnter the name of user");
 		String name = sc.nextLine();
 		System.out.println("Enter the email of user");
@@ -137,13 +135,13 @@ public class HotelApp {
 		if (email.toLowerCase().endsWith("@gmail.com")) {
 			String conatct = sc.nextLine();
 			System.out.println("Enter username");
-			if (conatct.length()==10) {
+			if (conatct.length() == 10) {
 				String username = sc.nextLine();
 				System.out.println("Enter the password");
 				String password = sc.nextLine();
 				System.out.println("Re-Enter the password");
 				String rePassword = sc.nextLine();
-				if (password.equals(rePassword) && password.length()>4) {
+				if (password.equals(rePassword) && password.length() > 4) {
 					le.setConatct_no(conatct);
 					le.setEmail(email);
 					le.setName(name);
@@ -152,19 +150,16 @@ public class HotelApp {
 					String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!"
 							: "Unable to registration!";
 					System.out.println(msg);
-				}
-				else {
+				} else {
 					System.err.println("Mishmatch the password or length is greater than 4");
 				}
-			}
-			else {
+			} else {
 				System.err.println("Enter the valid contact number");
 			}
-		}else {
+		} else {
 			System.err.println("Enter the valid email that end @gmail.com");
 		}
-			
+
 	}
 
-	
 }

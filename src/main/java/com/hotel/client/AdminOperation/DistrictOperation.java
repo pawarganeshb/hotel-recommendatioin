@@ -23,9 +23,9 @@ public class DistrictOperation {
 			System.out.println("");
 			System.out.println("1)Add District");
 			System.out.println("2)Show All district");
-			System.out.println("3)Update State");
-			System.out.println("4)Delete State");
-			System.out.println("5)Search State");
+			System.out.println("3)Update district");
+			System.out.println("4)Delete district");
+			System.out.println("5)Search district");
 			System.out.println("6)Exit");
 			System.out.println("Enter your choice");
 			choice = sc.nextInt();
@@ -219,8 +219,9 @@ public class DistrictOperation {
 			String distName=sc.nextLine();
 			de.setDistName(distName);
 			de.setS_id(stateId);
-			if (districtService.searchDist(de)) {
-				System.out.println(distName);
+			dist=districtService.searchDist(de);
+			if (dist.size()!=0) {
+				dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
 			}
 			else {
 				System.err.println("district is not found");
