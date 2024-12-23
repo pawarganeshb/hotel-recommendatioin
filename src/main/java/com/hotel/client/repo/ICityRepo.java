@@ -10,4 +10,11 @@ public interface ICityRepo {
 	public boolean checkPrsentOrNot(CityEntity ce);
 	public boolean filledInJoin(CityEntity ce);
 	public List<CityEntity> showAllCities(CityEntity ce);
+	
+	public int getCount(CityEntity ce);
+	public boolean updateJoin(CityEntity ce,int newId);
+	public boolean insertDataInCity(String city);
+	public boolean delteCity(CityEntity ce);
+	
+	public List<CityEntity> serchCity(CityEntity ce);
 }

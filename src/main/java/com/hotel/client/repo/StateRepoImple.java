@@ -74,11 +74,11 @@ public class StateRepoImple extends Database_Connection implements ISateRepo {
 
 	@Override
 	public List<StateEntity> searchState(String stateName) {
-		String SQL = "SELECT * FROM state where stateName=?";
+		String SQL = " select * from state where stateName like ?";
 		List<StateEntity> stateList = new ArrayList<>();
 		try {
 			pst = con.prepareStatement(SQL);
-			pst.setString(1, stateName);
+			pst.setString(1,"%"+ stateName+"%");
 			 rs = pst.executeQuery();
 			while (rs.next()) {
 				stateList.add(new StateEntity(rs.getInt("stateId"), rs.getString("stateName")));

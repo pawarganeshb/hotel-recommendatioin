@@ -94,4 +94,86 @@ public class CityRepoImple extends Database_Connection implements ICityRepo {
 		}
 	}
 
+	@Override
+	public int getCount(CityEntity ce) {
+		try {
+			pst=con.prepareStatement("select count(c_id) from s_d_c_join where s_id=? and d_id=? and c_id=?");
+			pst.setInt(1, ce.getS_id());
+			pst.setInt(2, ce.getDistId());
+			pst.setInt(3, ce.getCityId());
+			rs=pst.executeQuery();
+			int count=0;
+			while (rs.next()) {
+				count=rs.getInt(1);
+			}
+			return count;
+		} catch (Exception e) {
+			System.out.println(e);
+			return 0;
+		}
+	}
+
+	@Override
+	public boolean updateJoin(CityEntity ce,int newId) {
+		try {
+			pst=con.prepareStatement(" update  s_d_c_join set c_id = ? where s_id=? and d_id=? and c_id=?");
+			pst.setInt(1, newId);
+			pst.setInt(2, ce.getS_id());
+			pst.setInt(3, ce.getDistId());
+			pst.setInt(4, ce.getCityId());
+			int value =pst.executeUpdate();
+			return value>0?true:false;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+
+	@Override
+	public boolean insertDataInCity(String city) {
+		try {
+			pst=con.prepareStatement("insert into cities values(0,?)");
+			pst.setString(1, city);
+			int value =pst.executeUpdate();
+			return value>0?true:false;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+	}
+
+	@Override
+	public boolean delteCity(CityEntity ce) {
+		try {
+			pst=con.prepareStatement("delete from s_d_c_join where s_id=? and d_id=? and c_id=?");
+			pst.setInt(1, ce.getS_id());
+			pst.setInt(2, ce.getDistId());
+			pst.setInt(3, ce.getCityId());
+			int value =pst.executeUpdate();
+			return value>0?true:false;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+	}
+
+	@Override
+	public List<CityEntity> serchCity(CityEntity ce) {
+		try {
+			pst=con.prepareStatement("select c.c_id,c.c_name from cities c inner join s_d_c_join sdc on c.c_id=sdc.c_id where s_id=? and d_id=? and c.c_name like ?");
+			pst.setInt(1, ce.getS_id());
+			pst.setInt(2, ce.getDistId());
+			pst.setString(3, "%"+ce.getCityName()+"%");
+			List<CityEntity> al=new ArrayList<CityEntity>();
+			rs=pst.executeQuery();
+			while (rs.next()) {
+				al.add(new CityEntity(rs.getInt(1),rs.getString(2)));
+			}
+			return al;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+
 }

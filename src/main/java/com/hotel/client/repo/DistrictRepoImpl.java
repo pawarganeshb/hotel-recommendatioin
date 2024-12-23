@@ -162,20 +162,21 @@ public class DistrictRepoImpl extends Database_Connection implements IDistrictRe
 	}
 
 	@Override
-	public boolean searchDist(DistrictEntity de) {
+	public List<DistrictEntity> searchDist(DistrictEntity de) {
 		try {
-			pst=con.prepareStatement("select d.distid d,distname from dist as d inner join state_dist_join as sd on d.distId=sd.distId where sd.stateId =? and d.distname=?");
+			pst=con.prepareStatement("select d.distid d,distname from dist as d inner join state_dist_join as sd on d.distId=sd.distId where sd.stateId =? and d.distname like ?");
 			pst.setInt(1, de.getS_id());
-			pst.setString(2, de.getDistName());
+			pst.setString(2,"%"+ de.getDistName()+"%");
+			List<DistrictEntity> al=new ArrayList<DistrictEntity>();
 			rs=pst.executeQuery();
-			boolean b=false;
 			while (rs.next()) {
-				b=true;
+				al.add(new DistrictEntity(rs.getInt(1), rs.getString(2)));
+				
 			}
-			return b;
+			return al;
 		} catch (Exception e) {
 			// TODO: handle exception
-			return false;
+			return null;
 		}
 	}
 

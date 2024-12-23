@@ -54,7 +54,7 @@ public class DistrictServiceImpl implements IDistrictService {
 		return districtRepo.newDistrict(de);
 	}
 	@Override
-	public boolean searchDist(DistrictEntity de) {
+	public List<DistrictEntity> searchDist(DistrictEntity de) {
 		// TODO Auto-generated method stub
 		return districtRepo.searchDist(de);
 	}

@@ -219,8 +219,9 @@ public class DistrictOperation {
 			String distName=sc.nextLine();
 			de.setDistName(distName);
 			de.setS_id(stateId);
-			if (districtService.searchDist(de)) {
-				System.out.println(distName);
+			dist=districtService.searchDist(de);
+			if (dist.size()!=0) {
+				dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
 			}
 			else {
 				System.err.println("district is not found");

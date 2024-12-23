@@ -33,5 +33,30 @@ public class CityServiceImple implements ICityService{
 		// TODO Auto-generated method stub
 		return cs.showAllCities(ce);
 	}
+	@Override
+	public int getCount(CityEntity ce) {
+		// TODO Auto-generated method stub
+		return cs.getCount(ce);
+	}
+	@Override
+	public boolean updateJoin(CityEntity ce,int newId) {
+		// TODO Auto-generated method stub
+		return cs.updateJoin(ce,newId);
+	}
+	@Override
+	public boolean insertDataInCity(String city) {
+		// TODO Auto-generated method stub
+		return cs.insertDataInCity(city);
+	}
+	@Override
+	public boolean delteCity(CityEntity ce) {
+		// TODO Auto-generated method stub
+		return cs.delteCity(ce);
+	}
+	@Override
+	public List<CityEntity> serchCity(CityEntity ce) {
+		// TODO Auto-generated method stub
+		return cs.serchCity(ce);
+	}
 
 }
