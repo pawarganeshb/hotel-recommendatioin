@@ -268,7 +268,7 @@ public class CityOperation {
 						if (cs.delteCity(ce)) {
 							System.out.println("city deleted successfully");
 						} else {
-							System.out.println(ce.getDistId()+"\t"+ce.getCityName()+"\t"+ce.getS_id());
+//							System.out.println(ce.getDistId()+"\t"+ce.getCityName()+"\t"+ce.getS_id());
 							System.out.println(" not delete city");
 						}
 						
