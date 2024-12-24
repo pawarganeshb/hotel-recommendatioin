@@ -34,5 +34,15 @@ public class HotelServiceImpl implements IHotelService {
 		// TODO Auto-generated method stub
 		return hs.showAllHotel(l_id);
 	}
+	@Override
+	public List<HotelEntity> serchHotel(int l_id, String name) {
+		// TODO Auto-generated method stub
+		return hs.serchHotel(l_id, name);
+	}
+	@Override
+	public boolean deleteHotel(int hotelId) {
+		// TODO Auto-generated method stub
+		return hs.deleteHotel(hotelId);
+	}
 
 }

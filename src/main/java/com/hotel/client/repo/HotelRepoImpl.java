@@ -107,5 +107,53 @@ public class HotelRepoImpl extends Database_Connection implements IHotelRepo {
 		}
 	}
 
+	@Override
+	public List<HotelEntity> serchHotel(int l_id, String name) {
+		try {
+			pst=con.prepareStatement(" select h.h_id,h.h_name,h.h_address,ac.a_type,GROUP_CONCAT(a.am_name ORDER BY a.am_name) AS aminities,(h.price + IFNULL(SUM(a.am_price), 0)) AS total_price from hotel h INNER JOIN accommodation ac ON ac.a_id = h.type left join hotel_aminity_join ha ON h.h_id = ha.h_id left join  aminities a ON ha.am_id = a.am_id where h.l_id = ? and h.h_name like ? group by h.h_id, h.h_name, h.h_address, ac.a_type, h.price");
+			pst.setInt(1, l_id);
+			pst.setString(2, "%"+name+"%");
+			rs=pst.executeQuery();
+			List<HotelEntity> al=new ArrayList<HotelEntity>();
+			while (rs.next()) {
+				HotelEntity he=new HotelEntity();
+				he.setHid(rs.getInt(1));
+				he.setHname(rs.getString(2));
+				he.setHaddress(rs.getString(3));
+				he.setTypeOfAccommodation(rs.getString(4));
+				String amenities = rs.getString("aminities");
+                if (amenities == null) {
+                    he.setAmminitiesName("No amenities");
+                } else {
+                    he.setAmminitiesName(amenities);
+                }
+				he.setHprice(rs.getInt(6));
+				al.add(he);
+				
+			}
+			return al;
+		} catch (Exception e) {
+			
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	@Override
+	public boolean deleteHotel(int hotelId) {
+		boolean isDeleted = false;
+		try {
+			pst=con.prepareStatement("DELETE FROM hotel WHERE h_id = ?");
+			pst.setInt(1, hotelId);
+	        int rowsAffected = pst.executeUpdate();
+	        if (rowsAffected > 0) {
+	            isDeleted = true;
+	        }
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return isDeleted;
+	}
+
 	
 }

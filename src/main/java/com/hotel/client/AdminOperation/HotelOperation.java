@@ -56,7 +56,7 @@ public class HotelOperation {
 
 				break;
 			case 4:
-
+				deleteHotel();
 				break;
 			case 5:
 				searchHotel();
@@ -188,7 +188,7 @@ public class HotelOperation {
 			System.err.println("you enter wrong state name");
 		}
 	}
-	
+
 	private void showHotesl() {
 		List<StateEntity> al = new ArrayList<StateEntity>();
 		al = iStateServices.getAllStates();
@@ -220,7 +220,7 @@ public class HotelOperation {
 						System.out.println("city_id \t city_Name");
 						cities.forEach((t) -> System.out.println(t.getCityId() + "\t\t" + t.getCityName()));
 
-						System.out.println("Eneter city name to add hotel");
+						System.out.println("Eneter city name to see hotel");
 						String cityNamw = sc.nextLine();
 						ce.setCityName(cityNamw);
 						int cityId = cs.getCityIdByName(ce);
@@ -229,15 +229,20 @@ public class HotelOperation {
 						ce.setCityId(cityId);
 						if (cityId != 0) {
 							int lid = hs.getLocationId(ce);
-							List<HotelEntity> hotels=new ArrayList<HotelEntity>();
-							hotels=hs.showAllHotel(lid);
-							if (hotels.size()!=0) {
-								hotels.forEach((t)->System.out.println(t.getHid()+"\t"+t.getHname()+"\t"+t.getHaddress()+"\t"+t.getTypeOfAccommodation()+"\t total price = "+t.getHprice()+"\nAminities = "+t.getAmminitiesName()));
+							List<HotelEntity> hotels = new ArrayList<HotelEntity>();
+							hotels = hs.showAllHotel(lid);
+							if (hotels.size() != 0) {
+								System.out.println(
+										"******************************Hotels*****************************************");
+								System.out.println("");
+								hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
+										+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\t total price = "
+										+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
+										+ "\n----------------------------------------------------------------------------------------"));
 							} else {
 								System.out.println("their are no hotels");
 							}
-							
-							
+
 						} else {
 							System.out.println("city is not found");
 						}
@@ -254,7 +259,7 @@ public class HotelOperation {
 			System.err.println("you enter wrong state name");
 		}
 	}
-	
+
 	private void searchHotel() {
 		List<StateEntity> al = new ArrayList<StateEntity>();
 		al = iStateServices.getAllStates();
@@ -286,7 +291,7 @@ public class HotelOperation {
 						System.out.println("city_id \t city_Name");
 						cities.forEach((t) -> System.out.println(t.getCityId() + "\t\t" + t.getCityName()));
 
-						System.out.println("Eneter city name to add hotel");
+						System.out.println("Eneter city name to see hotel");
 						String cityNamw = sc.nextLine();
 						ce.setCityName(cityNamw);
 						int cityId = cs.getCityIdByName(ce);
@@ -295,18 +300,33 @@ public class HotelOperation {
 						ce.setCityId(cityId);
 						if (cityId != 0) {
 							int lid = hs.getLocationId(ce);
-							List<HotelEntity> hotels=new ArrayList<HotelEntity>();
-							hotels=hs.showAllHotel(lid);
-							if (hotels.size()!=0) {
-								hotels.forEach((t)->System.out.println(t.getHid()+"\t"+t.getHname()+"\t"+t.getHaddress()+"\t"+t.getTypeOfAccommodation()+"\ttotal price = "+t.getHprice()+"\nAminities = "+t.getAmminitiesName()));
-								
-								System.out.println("Enter the hotel name to search");
-								String hotelname=sc.nextLine();
+							List<HotelEntity> hotels = new ArrayList<HotelEntity>();
+							hotels = hs.showAllHotel(lid);
+							if (hotels.size() != 0) {
+								System.out.println(
+										"******************************Hotels*****************************************");
+								System.out.println("");
+								hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
+										+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\ttotal price = "
+										+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
+										+ "\n----------------------------------------------------------------------------------------"));
+
+								System.out.println("Enter the hotel name to search hotel");
+								String hotelname = sc.nextLine();
+								hotels = hs.serchHotel(lid, hotelname);
+								if (hotels.size() != 0) {
+									hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
+											+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\ttotal price = "
+											+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
+											+ "\n----------------------------------------------------------------------------------------"));
+								} else {
+									System.out.println("search hotel is not found");
+								}
+
 							} else {
 								System.out.println("their are no hotels");
 							}
-							
-							
+
 						} else {
 							System.out.println("city is not found");
 						}
@@ -323,4 +343,87 @@ public class HotelOperation {
 			System.err.println("you enter wrong state name");
 		}
 	}
+
+	private void deleteHotel() {
+
+		Scanner sc = new Scanner(System.in);
+		List<StateEntity> al = new ArrayList<StateEntity>();
+		al = iStateServices.getAllStates();
+		System.out.println("*****************STATES********************");
+		System.out.println("State_id\t State_Name");
+		al.forEach((t) -> System.out.println(t.getS_id() + "\t\t" + t.getS_name()));
+
+		System.out.println("Enter the state to see Districts");
+		String statename = sc.nextLine();
+		int stateId = iStateServices.getSatteIdByName(statename);
+		if (stateId != 0) {
+			List<DistrictEntity> dist = districtService.showAllDistrcitWhitState(stateId);
+			if (dist.size() != 0) {
+				System.out.println("*****************District********************");
+				System.out.println("District_id\t District_Name");
+				dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
+				System.out.println("Enter the District to see cities");
+				String distName = sc.nextLine();
+				int distId = districtService.getDistIdByName(distName);
+				if (distId != 0) {
+					ce.setS_id(stateId);
+					ce.setDistId(distId);
+
+					List<CityEntity> cities = cs.showAllCities(ce);
+					if (cities.size() != 0) {
+						System.out.println("***************Cities****************");
+						System.out.println("city_id \t city_Name");
+						cities.forEach((t) -> System.out.println(t.getCityId() + "\t\t" + t.getCityName()));
+
+						System.out.println("Enter city name to see hotels");
+						String cityNamw = sc.nextLine();
+						ce.setCityName(cityNamw);
+						int cityId = cs.getCityIdByName(ce);
+						ce.setS_id(stateId);
+						ce.setDistId(distId);
+						ce.setCityId(cityId);
+						if (cityId != 0) {
+							int lid = hs.getLocationId(ce);
+							List<HotelEntity> hotels = hs.showAllHotel(lid);
+							if (hotels.size() != 0) {
+								System.out.println(
+										"******************************Hotels*****************************************");
+								System.out.println("");
+								hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
+										+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\t total price = "
+										+ t.getHprice() + "\nAmenities = " + t.getAmminitiesName()
+										+ "\n----------------------------------------------------------------------------------------"));
+
+								// Add delete functionality
+								System.out.println("Enter Hotel ID to delete (or press '0' to skip): ");
+								int hotelIdToDelete = sc.nextInt();
+								if (hotelIdToDelete != 0) {
+									boolean deleted = hs.deleteHotel(hotelIdToDelete);
+									if (deleted) {
+										System.out.println(
+												"Hotel with ID " + hotelIdToDelete + " has been deleted successfully.");
+									} else {
+										System.out.println("Failed to delete the hotel with ID " + hotelIdToDelete);
+									}
+								}
+							} else {
+								System.out.println("There are no hotels.");
+							}
+						} else {
+							System.out.println("City not found.");
+						}
+					} else {
+						System.out.println("Associated district has no cities.");
+					}
+				} else {
+					System.out.println("District not found.");
+				}
+			} else {
+				System.out.println("Associated state has no districts.");
+			}
+		} else {
+			System.err.println("You entered an incorrect state name.");
+		}
+	}
+
 }

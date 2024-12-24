@@ -13,6 +13,8 @@ public interface IHotelRepo {
 	public boolean insertIntoAminityJoin(int hid,int amid);
 	
 	public List<HotelEntity> showAllHotel(int l_id);
+	public List<HotelEntity> serchHotel(int l_id,String name);
+	public boolean deleteHotel(int hotelId);
 	
 	
 }
