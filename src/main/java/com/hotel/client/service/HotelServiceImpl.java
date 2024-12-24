@@ -2,9 +2,11 @@ package com.hotel.client.service;
 
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.HotelEntity;
+import com.hotel.client.repo.HotelRepoImpl;
+import com.hotel.client.repo.IHotelRepo;
 
 public class HotelServiceImpl implements IHotelService {
-	IHotelService hs=new HotelServiceImpl();
+	IHotelRepo hs=new  HotelRepoImpl();
 	@Override
 	public int getLocationId(CityEntity ce) {
 		// TODO Auto-generated method stub

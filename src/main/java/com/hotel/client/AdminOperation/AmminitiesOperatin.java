@@ -72,7 +72,7 @@ public class AmminitiesOperatin {
 				: "Unable to add amminity.");
 	}
 
-	private void showAmminities() {
+	public static void showAmminities() {
 		if (ammnityService.showAmmnity().isEmpty()) {
 			System.out.println("No Available Amminity!");
 		} else {

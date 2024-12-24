@@ -62,7 +62,7 @@ public class AccommodationOperation {
 				: "Unable to Add Accommodation");
 	}
 
-	private void showAccommodation() {
+	public static void showAccommodation() {
 		System.out.println("********************Accommodarion**************************");
 		accommodationService.showAccommodation().forEach((t)->System.out.println(t.getAccommodationID()+"\t"+t.getTypeOfAccommodation()));
 	}

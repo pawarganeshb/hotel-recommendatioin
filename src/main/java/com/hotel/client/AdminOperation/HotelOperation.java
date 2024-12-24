@@ -16,6 +16,7 @@ import com.hotel.client.service.HotelServiceImpl;
 import com.hotel.client.service.IAccommodationService;
 import com.hotel.client.service.IAmminitiesService;
 import com.hotel.client.service.ICityService;
+import com.hotel.client.service.IHotelService;
 import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.StateServices;
 
@@ -24,7 +25,7 @@ public class HotelOperation {
 	static DistrictServiceImpl districtService = new DistrictServiceImpl();
 	static Scanner sc = new Scanner(System.in);
 	static HotelEntity he = new HotelEntity();
-	static HotelServiceImpl hs = new HotelServiceImpl();
+	static IHotelService hs = new HotelServiceImpl();
 	static CityEntity ce = new CityEntity();
 	static ICityService cs = new CityServiceImple();
 	static IAccommodationService as = new AccommodationServiceImple();
@@ -49,7 +50,7 @@ public class HotelOperation {
 				addHotel();
 				break;
 			case 2:
-
+				showHotesl();
 				break;
 			case 3:
 
@@ -121,9 +122,10 @@ public class HotelOperation {
 								System.out.println("Enter the price of hotel");
 								int price = sc.nextInt();
 								sc.nextLine();
-								as.showAccommodation();
+								AccommodationOperation.showAccommodation();
 								System.out.println("Enter the Id of  Accommodation");
 								int aid = sc.nextInt();
+								sc.nextLine();
 								if (as.check(aid)) {
 									he.setHname(hname);
 									he.setHaddress(hadd);
@@ -140,7 +142,7 @@ public class HotelOperation {
 										if (msg.equals("yes")) {
 											do {
 												int hid = hs.hotelId();
-												ams.showAmmnity();
+												AmminitiesOperatin.showAmminities();
 												System.out.println("Eneter the Aminity Id to add");
 												int ami = sc.nextInt();
 												sc.nextLine();
@@ -153,7 +155,10 @@ public class HotelOperation {
 												} else {
 													System.out.println("you enter wrong aminity id");
 												}
-											} while (msg.equals("yess"));
+												System.out.println("do you want to add more animity");
+												System.out.println("Enter yes or no");
+												msg = sc.nextLine().toLowerCase();
+											} while (msg.equals("yes"));
 										} else {
 											System.out.println("Thank You....");
 										}
@@ -182,5 +187,9 @@ public class HotelOperation {
 		} else {
 			System.err.println("you enter wrong state name");
 		}
+	}
+	
+	private void showHotesl() {
+		
 	}
 }
