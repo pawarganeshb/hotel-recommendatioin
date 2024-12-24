@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccommodationEntity {
+public class AccommodationEntity extends CityEntity {
 	private Integer accommodationID;
 	private String typeOfAccommodation;
 }

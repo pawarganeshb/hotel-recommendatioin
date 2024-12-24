@@ -6,6 +6,7 @@ import com.hotel.client.AdminOperation.AccommodationOperation;
 import com.hotel.client.AdminOperation.AmminitiesOperatin;
 import com.hotel.client.AdminOperation.CityOperation;
 import com.hotel.client.AdminOperation.DistrictOperation;
+import com.hotel.client.AdminOperation.HotelOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.AdminOperation.UserOperation;
 import com.hotel.client.entity.LoginEntity;
@@ -86,7 +87,8 @@ public class HotelApp {
 							System.out.println();
 							break;
 						case 6:
-
+							new HotelOperation();
+							System.out.println("");
 							break;
 						case 7:
 							new UserOperation();

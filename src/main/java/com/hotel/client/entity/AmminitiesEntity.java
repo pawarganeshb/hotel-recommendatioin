@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AmminitiesEntity {
+public class AmminitiesEntity extends AccommodationEntity {
 	private Integer aminitiesID;
 	private String amminitiesName;
 	private double ammnitiesPrice;
