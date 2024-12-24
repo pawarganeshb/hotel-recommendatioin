@@ -15,5 +15,15 @@ public class HotelServiceImpl implements IHotelService {
 		// TODO Auto-generated method stub
 		return hs.insertIntoHotel(he);
 	}
+	@Override
+	public int hotelId() {
+		// TODO Auto-generated method stub
+		return hs.hotelId();
+	}
+	@Override
+	public boolean insertIntoAminityJoin(int hid, int amid) {
+		// TODO Auto-generated method stub
+		return hs.insertIntoAminityJoin(hid, amid);
+	}
 
 }

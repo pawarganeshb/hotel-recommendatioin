@@ -102,9 +102,9 @@ public class AccommodationRepoImple extends Database_Connection implements IAcco
 			pst=con.prepareStatement("select * from  accommodation where a_id=?");
 			pst.setInt(1, a);
 			rs=pst.executeQuery();
-			boolean b=true;
+			boolean b=false;
 			while (rs.next()) {
-				b=false;
+				b=true;
 			}
 			return b;
 		} catch (Exception e) {

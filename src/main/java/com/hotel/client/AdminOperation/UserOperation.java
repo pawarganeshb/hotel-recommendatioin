@@ -20,6 +20,7 @@ public class UserOperation {
 			System.out.println("2)Block user");
 			System.out.println("3)Unblock User");
 			System.out.println("4)search user");
+			System.out.println("5)Exit");
 			System.out.println("Enter your choice");
 			choice = sc.nextInt();
 			sc.nextLine();

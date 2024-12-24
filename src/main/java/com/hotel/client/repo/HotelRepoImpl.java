@@ -43,5 +43,35 @@ public class HotelRepoImpl extends Database_Connection implements IHotelRepo {
 		}
 	}
 
+	@Override
+	public int hotelId() {
+		try {
+			pst=con.prepareStatement("select max(h_id) from hotel");
+			rs=pst.executeQuery();
+			int hid=0;
+			while (rs.next()) {
+				hid=rs.getInt(1);
+			}
+			return hid;
+		} catch (Exception e) {
+			System.out.println(e);
+			return 0;
+		}
+	}
+
+	@Override
+	public boolean insertIntoAminityJoin(int hid, int amid) {
+		try {
+			pst=con.prepareStatement("insert into  hotel_aminity_join values(?,?)");
+			pst.setInt(1, amid);
+			pst.setInt(2, hid);
+			int value=pst.executeUpdate();
+			return value>0?true:false;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+
 	
 }

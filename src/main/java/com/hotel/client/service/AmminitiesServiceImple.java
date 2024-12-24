@@ -35,4 +35,10 @@ public class AmminitiesServiceImple implements IAmminitiesService {
 		return amminityRepo.search(name);
 	}
 
+	@Override
+	public boolean checkAminity(int amid) {
+		// TODO Auto-generated method stub
+		return amminityRepo.checkAminity(amid);
+	}
+
 }

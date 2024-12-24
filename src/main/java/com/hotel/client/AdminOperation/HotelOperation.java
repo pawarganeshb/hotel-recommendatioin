@@ -9,10 +9,12 @@ import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.HotelEntity;
 import com.hotel.client.entity.StateEntity;
 import com.hotel.client.service.AccommodationServiceImple;
+import com.hotel.client.service.AmminitiesServiceImple;
 import com.hotel.client.service.CityServiceImple;
 import com.hotel.client.service.DistrictServiceImpl;
 import com.hotel.client.service.HotelServiceImpl;
 import com.hotel.client.service.IAccommodationService;
+import com.hotel.client.service.IAmminitiesService;
 import com.hotel.client.service.ICityService;
 import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.StateServices;
@@ -20,14 +22,16 @@ import com.hotel.client.service.StateServices;
 public class HotelOperation {
 	static IStateServices iStateServices = new StateServices();
 	static DistrictServiceImpl districtService = new DistrictServiceImpl();
-	static Scanner sc=new Scanner(System.in);
-	static HotelEntity he=new HotelEntity();
-	static HotelServiceImpl hs=new HotelServiceImpl();
+	static Scanner sc = new Scanner(System.in);
+	static HotelEntity he = new HotelEntity();
+	static HotelServiceImpl hs = new HotelServiceImpl();
 	static CityEntity ce = new CityEntity();
 	static ICityService cs = new CityServiceImple();
-	static IAccommodationService as=new AccommodationServiceImple();
-	public HotelOperation(){
-		
+	static IAccommodationService as = new AccommodationServiceImple();
+	static IAmminitiesService ams = new AmminitiesServiceImple();
+
+	public HotelOperation() {
+
 		int choice = 0;
 		do {
 			System.out.println("");
@@ -45,16 +49,16 @@ public class HotelOperation {
 				addHotel();
 				break;
 			case 2:
-				
+
 				break;
 			case 3:
-				
+
 				break;
 			case 4:
-				
+
 				break;
 			case 5:
-				
+
 				break;
 			case 6:
 
@@ -66,7 +70,7 @@ public class HotelOperation {
 		} while (choice != 6);
 
 	}
-	
+
 	private void addHotel() {
 		List<StateEntity> al = new ArrayList<StateEntity>();
 		al = iStateServices.getAllStates();
@@ -97,29 +101,29 @@ public class HotelOperation {
 						System.out.println("***************Cities****************");
 						System.out.println("city_id \t city_Name");
 						cities.forEach((t) -> System.out.println(t.getCityId() + "\t\t" + t.getCityName()));
-						
+
 						System.out.println("Eneter city name to add hotel");
-						String cityNamw=sc.nextLine();
+						String cityNamw = sc.nextLine();
 						ce.setCityName(cityNamw);
-						int cityId=cs.getCityIdByName(ce);
+						int cityId = cs.getCityIdByName(ce);
 						ce.setS_id(stateId);
 						ce.setDistId(distId);
 						ce.setCityId(cityId);
-						if (cityId!=0) {
-							int lid=hs.getLocationId(ce);
+						if (cityId != 0) {
+							int lid = hs.getLocationId(ce);
 							System.out.println("Enter the hotel name");
-							String hname=sc.nextLine();
+							String hname = sc.nextLine();
 							System.out.println("Enetr the hotel Address");
-							String hadd=sc.nextLine();
+							String hadd = sc.nextLine();
 							System.out.println("Enter the contact number of hotel");
-							String hconatct=sc.nextLine();
-							if (hconatct.length()==10) {
+							String hconatct = sc.nextLine();
+							if (hconatct.length() == 10) {
 								System.out.println("Enter the price of hotel");
-								int price=sc.nextInt();
+								int price = sc.nextInt();
 								sc.nextLine();
 								as.showAccommodation();
 								System.out.println("Enter the Id of  Accommodation");
-								int aid=sc.nextInt();
+								int aid = sc.nextInt();
 								if (as.check(aid)) {
 									he.setHname(hname);
 									he.setHaddress(hadd);
@@ -127,18 +131,39 @@ public class HotelOperation {
 									he.setLid(lid);
 									he.setHprice(price);
 									he.setAccommodationID(aid);
-									
+
 									if (hs.insertIntoHotel(he)) {
-										
+										String msg = "";
+										System.out.println("Do you want to add aminity");
+										System.out.println("Enter yes or no");
+										msg = sc.nextLine().toLowerCase();
+										if (msg.equals("yes")) {
+											do {
+												int hid = hs.hotelId();
+												ams.showAmmnity();
+												System.out.println("Eneter the Aminity Id to add");
+												int ami = sc.nextInt();
+												sc.nextLine();
+												if (ams.checkAminity(ami)) {
+													if (hs.insertIntoAminityJoin(hid, ami)) {
+														System.out.println("Data is filled.....");
+													} else {
+														System.out.println("failed to insert data");
+													}
+												} else {
+													System.out.println("you enter wrong aminity id");
+												}
+											} while (msg.equals("yess"));
+										} else {
+											System.out.println("Thank You....");
+										}
 									} else {
 										System.out.println("data in not inserted");
 									}
-								}
-								else {
+								} else {
 									System.out.println("you enter the wrong ID");
 								}
-								
-								
+
 							} else {
 								System.out.println("you enter the wrong number");
 							}
