@@ -31,20 +31,23 @@ public class LoginRepoImpl extends Database_Connection implements ILoginRepo {
 	@Override
 	public LoginEntity checkType(LoginEntity le) {
 		try {
-			pst=con.prepareStatement("select Name,userType from user where username=? and password=?");
+			pst=con.prepareStatement("select Name,userType,status from user where username=? and password=?");
 			pst.setString(1, le.getUsername());
 			pst.setString(2, le.getPassword());
 			rs=pst.executeQuery();
 			String type="";
 			String name="";
+			String status="";
 			while (rs.next()) {
 				name=rs.getString(1);
 				type=rs.getString(2);
+				status=rs.getString(3);
 				
 			}
 			LoginEntity le1=new LoginEntity();
 			le1.setType(type);
 			le1.setName(name);
+			le1.setStatus(status);
 			return le1;
 		} catch (SQLException e) {
 			e.printStackTrace();

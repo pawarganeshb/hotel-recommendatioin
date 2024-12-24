@@ -112,7 +112,13 @@ public class HotelApp {
 				le.setPassword(password);
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("User")) {
-					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
+					if (le.getStatus().equals("open")) {
+						System.out.println(
+								"**************Welcome " + le.getName().toUpperCase() + "***************");
+					}
+					else {
+						System.out.println("user block by admine....");
+					}
 				} else {
 					System.out.println("User Not Found........");
 				}
