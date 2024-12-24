@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HotelEntity extends CityEntity{
+public class HotelEntity extends AmminitiesEntity{
 	private int hid;
 	private String hname;
 	private String hconatct;
 	private String haddress;
 	private int hprice;
-	private int aid;
+	private int lid;
+	
 }
