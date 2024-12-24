@@ -1,5 +1,7 @@
 package com.hotel.client.service;
 
+import java.util.List;
+
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.HotelEntity;
 import com.hotel.client.repo.HotelRepoImpl;
@@ -26,6 +28,11 @@ public class HotelServiceImpl implements IHotelService {
 	public boolean insertIntoAminityJoin(int hid, int amid) {
 		// TODO Auto-generated method stub
 		return hs.insertIntoAminityJoin(hid, amid);
+	}
+	@Override
+	public List<HotelEntity> showAllHotel(int l_id) {
+		// TODO Auto-generated method stub
+		return hs.showAllHotel(l_id);
 	}
 
 }
