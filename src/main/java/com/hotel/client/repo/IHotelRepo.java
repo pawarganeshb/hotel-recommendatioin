@@ -14,7 +14,14 @@ public interface IHotelRepo {
 	
 	public List<HotelEntity> showAllHotel(int l_id);
 	public List<HotelEntity> serchHotel(int l_id,String name);
-	public boolean deleteHotel(int hotelId);
+	public boolean deleteHotel(int hotelId,int lid);
+	
+	public boolean checkPresence(int hid,int lid);
+	public boolean updateHotelName(String name,int hid);
+	public boolean updateHotelContatc(String contact,int hid);
+	public boolean updateHotelPrice(int price,int hid);
+
+
 	
 	
 }

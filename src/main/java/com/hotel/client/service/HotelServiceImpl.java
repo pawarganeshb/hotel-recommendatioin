@@ -40,9 +40,29 @@ public class HotelServiceImpl implements IHotelService {
 		return hs.serchHotel(l_id, name);
 	}
 	@Override
-	public boolean deleteHotel(int hotelId) {
+	public boolean deleteHotel(int hotelId,int lid) {
 		// TODO Auto-generated method stub
-		return hs.deleteHotel(hotelId);
+		return hs.deleteHotel(hotelId,lid);
+	}
+	@Override
+	public boolean checkPresence(int hid, int lid) {
+		// TODO Auto-generated method stub
+		return hs.checkPresence(hid, lid);
+	}
+	@Override
+	public boolean updateHotelName(String name, int hid) {
+		// TODO Auto-generated method stub
+		return hs.updateHotelName(name, hid);
+	}
+	@Override
+	public boolean updateHotelContatc(String contact, int hid) {
+		// TODO Auto-generated method stub
+		return hs.updateHotelContatc(contact, hid);
+	}
+	@Override
+	public boolean updateHotelPrice(int price, int hid) {
+		// TODO Auto-generated method stub
+		return hs.updateHotelPrice(price, hid);
 	}
 
 }
