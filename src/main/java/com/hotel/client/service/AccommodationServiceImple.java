@@ -35,4 +35,10 @@ public class AccommodationServiceImple implements IAccommodationService {
 		return accommodationRepo.serch(name);
 	}
 
+	@Override
+	public boolean check(int a) {
+		// TODO Auto-generated method stub
+		return accommodationRepo.check(a);
+	}
+
 }

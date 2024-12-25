@@ -94,4 +94,21 @@ public class AmminityRepoImple extends Database_Connection implements IAmminityR
 		}
 	}
 
+	@Override
+	public boolean checkAminity(int amid) {
+		try {
+			pst=con.prepareStatement("select * from  aminities where am_id=?");
+			pst.setInt(1, amid);
+			rs=pst.executeQuery();
+			boolean b=false;
+			while (rs.next()) {
+				b=true;
+			}
+			return b;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+
 }

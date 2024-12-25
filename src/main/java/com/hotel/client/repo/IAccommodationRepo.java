@@ -14,4 +14,6 @@ public interface IAccommodationRepo {
 	public boolean deleteAccommodation(int id);
 	
 	public List<AccommodationEntity> serch(String name);
+	
+	public boolean check(int a);
 }
