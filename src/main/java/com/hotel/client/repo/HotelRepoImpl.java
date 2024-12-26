@@ -3,6 +3,7 @@ package com.hotel.client.repo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hotel.client.AdminOperation.HotelRecomendation;
 import com.hotel.client.config.Database_Connection;
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.HotelEntity;
@@ -218,6 +219,39 @@ public class HotelRepoImpl extends Database_Connection implements IHotelRepo {
 			return false;
 		}
 
+	}
+
+	@Override
+	public List<HotelRecomendation> showAllHotelWithAcc(int l_id, int am_id) {
+		try {
+			pst = con.prepareStatement(
+					" select h.h_id,h.h_name,h.h_address,ac.a_type,GROUP_CONCAT(a.am_name ORDER BY a.am_name) AS aminities,(h.price + IFNULL(SUM(a.am_price), 0)) AS total_price from hotel h INNER JOIN accommodation ac ON ac.a_id = h.type left join hotel_aminity_join ha ON h.h_id = ha.h_id left join  aminities a ON ha.am_id = a.am_id where h.l_id = ? and a_id=? group by h.h_id, h.h_name, h.h_address, ac.a_type, h.price");
+			pst.setInt(1, l_id);
+			pst.setInt(2, am_id);
+			rs = pst.executeQuery();
+			List<HotelRecomendation> al = new ArrayList<HotelRecomendation>();
+			while (rs.next()) {
+				HotelRecomendation he = new HotelRecomendation();
+				he.setH_id(am_id);
+				he.setH_name(rs.getString(2));
+				he.setH_add(rs.getString(3));
+				he.setType(rs.getString(4));
+				String amenities = rs.getString("aminities");
+				if (amenities == null) {
+					he.setAm(amenities);
+				} else {
+					he.setAm(amenities);
+				}
+				he.setPrice(rs.getInt(6));
+				al.add(he);
+
+			}
+			return al;
+		} catch (Exception e) {
+
+			System.out.println(e);
+			return null;
+		}
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.hotel.client;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.hotel.client.AdminOperation.AccommodationOperation;
@@ -9,8 +11,20 @@ import com.hotel.client.AdminOperation.DistrictOperation;
 import com.hotel.client.AdminOperation.HotelOperation;
 import com.hotel.client.AdminOperation.StateOperation;
 import com.hotel.client.AdminOperation.UserOperation;
+import com.hotel.client.entity.CityEntity;
+import com.hotel.client.entity.DistrictEntity;
+import com.hotel.client.entity.HotelEntity;
 import com.hotel.client.entity.LoginEntity;
 import com.hotel.client.entity.StateEntity;
+import com.hotel.client.service.AccommodationServiceImple;
+import com.hotel.client.service.AmminitiesServiceImple;
+import com.hotel.client.service.CityServiceImple;
+import com.hotel.client.service.DistrictServiceImpl;
+import com.hotel.client.service.HotelServiceImpl;
+import com.hotel.client.service.IAccommodationService;
+import com.hotel.client.service.IAmminitiesService;
+import com.hotel.client.service.ICityService;
+import com.hotel.client.service.IHotelService;
 import com.hotel.client.service.ILoginService;
 import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.IUserService;
@@ -20,10 +34,15 @@ import com.hotel.client.service.UserSeviceImpl;
 
 public class HotelApp {
 	static int count = 0;
-	// entity class object
 	static LoginEntity le = new LoginEntity();
 	static StateEntity se = new StateEntity();
-	// Service object
+	static DistrictServiceImpl districtService = new DistrictServiceImpl();
+	static HotelEntity he = new HotelEntity();
+	static IHotelService hs = new HotelServiceImpl();
+	static CityEntity ce = new CityEntity();
+	static ICityService cs = new CityServiceImple();
+	static IAccommodationService as = new AccommodationServiceImple();
+	static IAmminitiesService ams = new AmminitiesServiceImple();
 	static ILoginService iLoginService = new LoginServiceImpl();
 	static IStateServices iStateServices = new StateServices();
 	static IUserService us=new UserSeviceImpl();
@@ -109,7 +128,6 @@ public class HotelApp {
 				break;
 			case 2:
 				System.out.println("Enter your username");
-
 				username = sc.nextLine();
 				System.out.println("Enter your password");
 				password = sc.nextLine();
@@ -143,7 +161,7 @@ public class HotelApp {
 								System.out.println("");
 								break;	
 							case 3:
-								
+								serachHotel();
 								break;
 							case 4:
 								
@@ -272,5 +290,89 @@ public class HotelApp {
 				System.out.println("Enter valid operation");
 				break;
 			}
+	}
+	
+	public static void serachHotel() {
+		List<StateEntity> al = new ArrayList<StateEntity>();
+		al = iStateServices.getAllStates();
+		System.out.println("*****************STATES********************");
+		System.out.println("State_id\t State_Name");
+		al.forEach((t) -> System.out.println(t.getS_id() + "\t\t" + t.getS_name()));
+
+		System.out.println("Enter the state name");
+		String statename = sc.nextLine();
+		int stateId = iStateServices.getSatteIdByName(statename);
+		if (stateId != 0) {
+			List<DistrictEntity> dist = new ArrayList<DistrictEntity>();
+			dist = districtService.showAllDistrcitWhitState(stateId);
+			if (dist.size() != 0) {
+				System.out.println("*****************District********************");
+				System.out.println("District_id\t District_Name");
+				dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
+				System.out.println("Enter the District name");
+				String distName = sc.nextLine();
+				int distId = districtService.getDistIdByName(distName);
+				if (distId != 0) {
+					ce.setS_id(stateId);
+					ce.setDistId(distId);
+
+					List<CityEntity> cities = new ArrayList<CityEntity>();
+					cities = cs.showAllCities(ce);
+					if (cities.size() != 0) {
+						System.out.println("***************Cities****************");
+						System.out.println("city_id \t city_Name");
+						cities.forEach((t) -> System.out.println(t.getCityId() + "\t\t" + t.getCityName()));
+
+						System.out.println("Eneter city name to find hotels hotel");
+						String cityNamw = sc.nextLine();
+						ce.setCityName(cityNamw);
+						int cityId = cs.getCityIdByName(ce);
+						ce.setS_id(stateId);
+						ce.setDistId(distId);
+						ce.setCityId(cityId);
+						if (cityId != 0) {
+							int lid = hs.getLocationId(ce);
+							AccommodationOperation.showAccommodation();
+							System.out.println("Enter the Id of hotel");
+							int amId=sc.nextInt();
+							sc.nextLine();
+							if (as.check(amId)) {
+								System.out.println("Enter the maximum Price Range");
+								int Price=sc.nextInt();
+								sc.nextLine();
+								
+							} else {
+								System.out.println("you enter the wrong Id");
+							}
+//							List<HotelEntity> hotels = new ArrayList<HotelEntity>();
+//							hotels = hs.showAllHotel(lid);
+//							if (hotels.size() != 0) {
+//								System.out.println(
+//										"******************************Hotels*****************************************");
+//								System.out.println("");
+//								hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
+//										+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\t total price = "
+//										+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
+//										+ "\n----------------------------------------------------------------------------------------"));
+//							} else {
+//								System.out.println("their are no hotels");
+//							}
+
+						} else {
+							System.out.println("city is not found");
+						}
+					} else {
+						System.out.println("assoicate district have no cities");
+					}
+				} else {
+					System.out.println("District is not found");
+				}
+			} else {
+				System.out.println("associate state have no districts");
+			}
+		} else {
+			System.err.println("you enter wrong state name");
+		}
+
 	}
 }
