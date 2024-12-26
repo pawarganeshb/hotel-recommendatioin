@@ -12,4 +12,8 @@ public interface IAmminityRepo {
 	public boolean updateAmminity(AmminitiesEntity amminitiesEntity);
 
 	public boolean deleteAmminity(int amminitiesEntity);
+	
+	public List<AmminitiesEntity> search(String name);
+	
+	public boolean checkAminity(int amid);
 }

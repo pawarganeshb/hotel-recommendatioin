@@ -1,9 +1,11 @@
 package com.hotel.client.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-@Data
+import lombok.Setter;
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class DistrictEntity extends StateEntity {

@@ -5,8 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.hotel.client.entity.AccommodationEntity;
-
 public class Database_Connection {
 	Database db=Database.getInstance();
 	protected  Connection con=Database.getCon();

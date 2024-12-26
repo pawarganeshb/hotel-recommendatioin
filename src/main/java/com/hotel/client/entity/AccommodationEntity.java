@@ -1,13 +1,15 @@
 package com.hotel.client.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccommodationEntity {
+public class AccommodationEntity extends CityEntity {
 	private Integer accommodationID;
 	private String typeOfAccommodation;
 }

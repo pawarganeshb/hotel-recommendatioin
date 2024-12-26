@@ -1,5 +1,7 @@
 package com.hotel.client.AdminOperation;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.hotel.client.entity.AmminitiesEntity;
@@ -10,6 +12,7 @@ public class AmminitiesOperatin {
 
 	static Scanner scanner = new Scanner(System.in);
 	static IAmminitiesService ammnityService = new AmminitiesServiceImple();
+	static AmminitiesEntity ae=new AmminitiesEntity();
 
 	public AmminitiesOperatin() {
 		int choice=0;
@@ -18,7 +21,8 @@ public class AmminitiesOperatin {
 			System.out.println("2) Show Amminity");
 			System.out.println("3) Update Amminity");
 			System.out.println("4) Delete Amminity");
-			System.out.println("5) Exit From Amminity Operation");
+			System.out.println("5) Search Amminity");
+			System.out.println("6) Exit From Amminity Operation");
 
 			System.out.print("Enter your choice: ");
 			choice = scanner.nextInt();
@@ -40,16 +44,19 @@ public class AmminitiesOperatin {
 			case 4:
 				deleteAmminity();
 				break;
-
 			case 5:
-				System.out.println("Exiting from Amminity Operations...");
+				serchAmminity();
+				break;
 				
+			case 6:
+				System.out.println("Exiting from Amminity Operations...");
+				break;
 				
 
 			default:
 				System.out.println("Invalid choice! Please select a valid option.");
 			}
-		} while (choice!=5);
+		} while (choice!=6);
 	}
 
 	private void addAmminity() {
@@ -65,7 +72,7 @@ public class AmminitiesOperatin {
 				: "Unable to add amminity.");
 	}
 
-	private void showAmminities() {
+	public static void showAmminities() {
 		if (ammnityService.showAmmnity().isEmpty()) {
 			System.out.println("No Available Amminity!");
 		} else {
@@ -96,5 +103,20 @@ public class AmminitiesOperatin {
 		int deleteID = scanner.nextInt();
 		
 		System.out.println(ammnityService.deleteAmminity(deleteID)?"Successfully Deleted Record!":"Unable to Delete Record");
+	}
+	
+	private void serchAmminity() {
+		showAmminities();
+		System.out.println("Enter Amminity to search");
+		String name=scanner.nextLine();
+		List<AmminitiesEntity> al=new ArrayList<AmminitiesEntity>();
+		al=ammnityService.search(name);
+		if (al.size()!=0) {
+			al.forEach((t)->System.out.println(t.getAminitiesID()+"\t"+t.getAmminitiesName()+"\t"+t.getAmmnitiesPrice()));
+		}
+		else {
+			System.out.println("Not found");
+		}
+		
 	}
 }

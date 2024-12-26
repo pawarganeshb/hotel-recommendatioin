@@ -23,9 +23,9 @@ public class DistrictOperation {
 			System.out.println("");
 			System.out.println("1)Add District");
 			System.out.println("2)Show All district");
-			System.out.println("3)Update State");
-			System.out.println("4)Delete State");
-			System.out.println("5)Search State");
+			System.out.println("3)Update district");
+			System.out.println("4)Delete district");
+			System.out.println("5)Search district");
 			System.out.println("6)Exit");
 			System.out.println("Enter your choice");
 			choice = sc.nextInt();
@@ -36,7 +36,7 @@ public class DistrictOperation {
 				al = iStateServices.getAllStates();
 				System.out.println("*****************STATES********************");
 				System.out.println("State_id\t State_Name");
-				al.forEach((t) -> System.out.println(t.getS_name()));
+				al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 				System.out.println("Enter the state where you add district");
 				String statename = sc.nextLine();
@@ -100,19 +100,19 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()));
-		al.forEach((t) -> System.out.println(t.getS_id() + "\t\t" + t.getS_name()));
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
-		int stateId = iStateServices.getSatteIdByName(statename);
-		if (stateId != 0) {
+			int stateId = iStateServices.getSatteIdByName(statename);
+			if (stateId!=0) {
 			List<DistrictEntity> dist = new ArrayList<DistrictEntity>();
 			dist = districtService.showAllDistrcitWhitState(stateId);
 			System.out.println("*****************District********************");
 			System.out.println("District_id\t District_Name");
-			dist.forEach((t) -> System.out.println(t.getDistId() + "\t" + t.getDistName()));
-		} else {
+			dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
+		}
+		else {
 			System.err.println("you enter wrong state name");
 		}
 
@@ -123,12 +123,12 @@ public class DistrictOperation {
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_id() + "\t\t" + t.getS_name()));
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
 		String statename = sc.nextLine();
 		int stateId = iStateServices.getSatteIdByName(statename);
-		if (stateId != 0) {
+		if (stateId!=0) {
 			List<DistrictEntity> dist = new ArrayList<DistrictEntity>();
 			dist = districtService.showAllDistrcitWhitState(stateId);
 			System.out.println("*****************District********************");
@@ -167,7 +167,7 @@ public class DistrictOperation {
 					System.out.println("please enter yes or no");
 					String msg = sc.nextLine().toLowerCase();
 					if (msg.equals("yes")) {
-
+						
 						if (districtService.newDistrict(de)) {
 							distId = districtService.getDistIdByName(newdist);
 							de.setDistId(distId);
@@ -181,7 +181,8 @@ public class DistrictOperation {
 						} else {
 							System.out.println("data is not inserted");
 						}
-					} else {
+					}
+					else {
 						System.out.println("Data is not updated");
 						System.out.println("data is not found");
 					}
@@ -189,51 +190,20 @@ public class DistrictOperation {
 				}
 			} else {
 				System.err.println("you enter wrong district");
-			}
-		} else {
+			} 
+		}
+		else {
 			System.err.println("state is not found");
 		}
 
 	}
-
+	
+	
 	public static void serach() {
 		List<StateEntity> al = new ArrayList<StateEntity>();
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
 		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()));
-
-		System.out.println("Enter the state to see Districts");
-		String statename = sc.nextLine();
-		int stateId = iStateServices.getSatteIdByName(statename);
-		if (stateId != 0) {
-			List<DistrictEntity> dist = new ArrayList<DistrictEntity>();
-			dist = districtService.showAllDistrcitWhitState(stateId);
-			System.out.println("*****************District********************");
-			System.out.println("District_id\t District_Name");
-			dist.forEach((t) -> System.out.println(t.getDistId() + "\t" + t.getDistName()));
-			System.out.println("Enter the district name to find");
-			String distName = sc.nextLine();
-			de.setDistName(distName);
-			de.setS_id(stateId);
-			if (districtService.searchDist(de)) {
-				System.out.println(distName);
-			} else {
-				System.err.println("district is not found");
-			}
-
-		} else {
-			System.err.println("you enter wrong state name");
-		}
-
-	}
-
-	public static void deleteDist() {
-		List<StateEntity> al = new ArrayList<StateEntity>();
-		al = iStateServices.getAllStates();
-		System.out.println("*****************STATES********************");
-		System.out.println("State_id\t State_Name");
-		al.forEach((t) -> System.out.println(t.getS_name()));
 		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
 
 		System.out.println("Enter the state to see Districts");
@@ -244,7 +214,44 @@ public class DistrictOperation {
 			dist = districtService.showAllDistrcitWhitState(stateId);
 			System.out.println("*****************District********************");
 			System.out.println("District_id\t District_Name");
-			dist.forEach((t) -> System.out.println(t.getDistId() + "\t" + t.getDistName()));
+			dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
+			System.out.println("Enter the district name to find");
+			String distName=sc.nextLine();
+			de.setDistName(distName);
+			de.setS_id(stateId);
+			dist=districtService.searchDist(de);
+			if (dist.size()!=0) {
+				dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
+			}
+			else {
+				System.err.println("district is not found");
+			}
+			
+		}
+		else {
+			System.err.println("you enter wrong state name");
+		}
+
+	}
+	
+	
+	
+	public static void deleteDist() {
+		List<StateEntity> al = new ArrayList<StateEntity>();
+		al = iStateServices.getAllStates();
+		System.out.println("*****************STATES********************");
+		System.out.println("State_id\t State_Name");
+		al.forEach((t) -> System.out.println(t.getS_id()+"\t\t"+t.getS_name()));
+
+		System.out.println("Enter the state to see Districts");
+		String statename = sc.nextLine();
+			int stateId = iStateServices.getSatteIdByName(statename);
+			if (stateId!=0) {
+			List<DistrictEntity> dist = new ArrayList<DistrictEntity>();
+			dist = districtService.showAllDistrcitWhitState(stateId);
+			System.out.println("*****************District********************");
+			System.out.println("District_id\t District_Name");
+			dist.forEach((t) -> System.out.println(t.getDistId() + "\t\t" + t.getDistName()));
 			System.out.println("enter the district to delete");
 			String distName=sc.nextLine();
 			de.setDistName(distName);

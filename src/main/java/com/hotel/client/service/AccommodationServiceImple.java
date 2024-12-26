@@ -29,4 +29,16 @@ public class AccommodationServiceImple implements IAccommodationService {
 		return accommodationRepo.deleteAccommodation(id);
 	}
 
+	@Override
+	public List<AccommodationEntity> serch(String name) {
+		// TODO Auto-generated method stub
+		return accommodationRepo.serch(name);
+	}
+
+	@Override
+	public boolean check(int a) {
+		// TODO Auto-generated method stub
+		return accommodationRepo.check(a);
+	}
+
 }

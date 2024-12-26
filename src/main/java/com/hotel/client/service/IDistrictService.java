@@ -15,7 +15,7 @@ public interface IDistrictService {
 	public boolean insertDataInJoin(DistrictEntity de);
 	public boolean newDistrict(DistrictEntity de);
 	
-	public boolean searchDist(DistrictEntity de);
+	public List<DistrictEntity> searchDist(DistrictEntity de);
 	public int checkDistCount(DistrictEntity de);
 	
 	public boolean delteFromJoin(DistrictEntity de);

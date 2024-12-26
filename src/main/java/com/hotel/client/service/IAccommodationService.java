@@ -12,4 +12,8 @@ public interface IAccommodationService {
 	public boolean updateAccommodation(AccommodationEntity accommodationEntity);
 
 	public boolean deleteAccommodation(int id);
+	
+	public List<AccommodationEntity> serch(String name);
+	
+	public boolean check(int a);
 }
