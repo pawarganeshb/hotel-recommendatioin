@@ -135,7 +135,6 @@ public class HotelApp {
 							sc.nextLine();
 							switch (choise) {
 							case 1:
-								
 								viewProfile(pas);
 								System.out.println("");
 								break;
