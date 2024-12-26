@@ -2,9 +2,9 @@ package com.hotel.client.service;
 
 import java.util.List;
 
-import com.hotel.client.AdminOperation.HotelRecomendation;
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.HotelEntity;
+import com.hotel.client.entity.RecomendationEntity;
 import com.hotel.client.repo.HotelRepoImpl;
 import com.hotel.client.repo.IHotelRepo;
 
@@ -66,9 +66,9 @@ public class HotelServiceImpl implements IHotelService {
 		return hs.updateHotelPrice(price, hid);
 	}
 	@Override
-	public List<HotelRecomendation> showAllHotelWithAcc(int l_id, int am_id) {
+	public List<RecomendationEntity> showAllHotelWithAcc(int l_id, int am_id,int min,int max) {
 		// TODO Auto-generated method stub
-		return hs.showAllHotelWithAcc(l_id, am_id);
+		return hs.showAllHotelWithAcc(l_id, am_id,min,max);
 	}
 
 }

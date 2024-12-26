@@ -2,9 +2,9 @@ package com.hotel.client.service;
 
 import java.util.List;
 
-import com.hotel.client.AdminOperation.HotelRecomendation;
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.HotelEntity;
+import com.hotel.client.entity.RecomendationEntity;
 
 public interface IHotelService {
 
@@ -22,5 +22,5 @@ public interface IHotelService {
 	public boolean updateHotelPrice(int price,int hid);
 	
 	
-	public List<HotelRecomendation> showAllHotelWithAcc(int l_id,int am_id); 
+	public List<RecomendationEntity> showAllHotelWithAcc(int l_id,int am_id,int min,int max); 
 }
