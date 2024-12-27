@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.AmminitiesEntity;
 import com.hotel.client.service.AmminitiesServiceImple;
 import com.hotel.client.service.IAmminitiesService;
 
-public class AmminitiesOperatin {
+public class AmminitiesOperatin extends ClassAndObject {
 
 	static Scanner scanner = new Scanner(System.in);
 	static IAmminitiesService ammnityService = new AmminitiesServiceImple();

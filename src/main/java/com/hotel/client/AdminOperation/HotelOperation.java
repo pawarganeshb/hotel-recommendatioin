@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.HotelEntity;
@@ -20,16 +21,8 @@ import com.hotel.client.service.IHotelService;
 import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.StateServices;
 
-public class HotelOperation {
-	static IStateServices iStateServices = new StateServices();
-	static DistrictServiceImpl districtService = new DistrictServiceImpl();
-	static Scanner sc = new Scanner(System.in);
-	static HotelEntity he = new HotelEntity();
-	static IHotelService hs = new HotelServiceImpl();
-	static CityEntity ce = new CityEntity();
-	static ICityService cs = new CityServiceImple();
-	static IAccommodationService as = new AccommodationServiceImple();
-	static IAmminitiesService ams = new AmminitiesServiceImple();
+public class HotelOperation extends ClassAndObject {
+	
 
 	public HotelOperation() {
 

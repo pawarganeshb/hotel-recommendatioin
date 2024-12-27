@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.StateEntity;
 import com.hotel.client.service.DistrictServiceImpl;
 import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.StateServices;
 
-public class DistrictOperation {
-	static IStateServices iStateServices = new StateServices();
-	static DistrictServiceImpl districtService = new DistrictServiceImpl();
+public class DistrictOperation extends ClassAndObject {
+	
 	static DistrictEntity de = new DistrictEntity();
-	static Scanner sc = new Scanner(System.in);
+	
 
 	public DistrictOperation() {
 
