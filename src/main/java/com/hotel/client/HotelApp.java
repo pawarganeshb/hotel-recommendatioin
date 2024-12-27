@@ -117,7 +117,7 @@ public class HotelApp extends ClassAndObject {
 						do {
 							System.out.println("1) View profile");
 							System.out.println("2) Update profile");
-							System.out.println("3) Search hotel");
+							System.out.println("3) Find hotels");
 							System.out.println("4) Exit");
 							System.out.println();
 							choise = sc.nextInt();
@@ -169,8 +169,8 @@ public class HotelApp extends ClassAndObject {
 		String name = sc.nextLine().trim();
 		System.out.println("Enter the email of user");
 		String email = sc.nextLine().trim();
-		System.out.println("Enter the contact number");
 		if (email.toLowerCase().endsWith("@gmail.com")) {
+			System.out.println("Enter the contact number");
 			String conatct = sc.nextLine().trim();
 			System.out.println("Enter username");
 			if (conatct.length() == 10) {

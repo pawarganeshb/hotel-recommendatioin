@@ -78,6 +78,7 @@ public class CityOperation extends ClassAndObject {
 				int cityId = cs.getCityIdByName(ce);
 				ce.setCityId(cityId);
 				if (cityId == 0) {
+					
 					if (cs.insertDataWithProcedure(ce)) {
 						System.out.println("data is filled");
 					} else {

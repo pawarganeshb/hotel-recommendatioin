@@ -21,6 +21,7 @@ public class CityRepoImple extends Database_Connection implements ICityRepo {
 			}
 			return cityId;
 		} catch (Exception e) {
+			System.out.println("somthing is not working");
 			System.out.println(e);
 			return 0;
 		}
@@ -36,6 +37,7 @@ public class CityRepoImple extends Database_Connection implements ICityRepo {
 			boolean b=cst.execute();
 			return !b;
 		} catch (Exception e) {
+			System.out.println("procedure is not working");
 			System.out.println(e);
 			return false;
 		}
@@ -64,7 +66,7 @@ public class CityRepoImple extends Database_Connection implements ICityRepo {
 	@Override
 	public boolean filledInJoin(CityEntity ce) {
 		try {
-			pst=con.prepareStatement("insert into s_d_c_join values(?,?,?)");
+			pst=con.prepareStatement("insert into s_d_c_join values(?,?,?,0)");
 			pst.setInt(1, ce.getS_id());
 			pst.setInt(2, ce.getDistId());
 			pst.setInt(3, ce.getCityId());
