@@ -22,13 +22,13 @@ import com.hotel.client.entity.StateEntity;
 
 
 public class HotelApp extends ClassAndObject {
-	static Logger logger = Logger.getLogger("HotelApp");
+	static Logger logger = Logger.getAnonymousLogger();
 
     // Static block to configure the logger with the properties file
     static {
         try {
             PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
-            
+            logger.info("working");
         } catch (Exception e) {
             System.err.println("Failed to configure logger: " + e.getMessage());
         }
@@ -382,7 +382,7 @@ public class HotelApp extends ClassAndObject {
 										System.out.println("Exiting...");
 										Thread.sleep(2000);
 									} catch (IOException e) {
-										// 
+										//
 										e.printStackTrace();
 									} // Waits for the user to press any key
 									catch (InterruptedException e) {

@@ -13,7 +13,7 @@ import com.hotel.client.entity.StateEntity;
 public class DistrictOperation extends ClassAndObject {
 	
 	static DistrictEntity de = new DistrictEntity();
-	static Logger logger = Logger.getLogger("CityOperation");
+	static Logger logger = Logger.getLogger("DistrictOperation");
 
     // Static block to configure the logger with the properties file
     static {
