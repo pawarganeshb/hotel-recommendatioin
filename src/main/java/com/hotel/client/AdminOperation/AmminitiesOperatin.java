@@ -3,6 +3,9 @@ package com.hotel.client.AdminOperation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
+
+import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.AmminitiesEntity;
@@ -10,7 +13,17 @@ import com.hotel.client.service.AmminitiesServiceImple;
 import com.hotel.client.service.IAmminitiesService;
 
 public class AmminitiesOperatin extends ClassAndObject {
+	static Logger logger = Logger.getLogger("AmminitiesOperatin");
 
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 	static Scanner scanner = new Scanner(System.in);
 	static IAmminitiesService ammnityService = new AmminitiesServiceImple();
 	static AmminitiesEntity ae=new AmminitiesEntity();
@@ -31,6 +44,7 @@ public class AmminitiesOperatin extends ClassAndObject {
 
 			switch (choice) {
 			case 1:
+				logger.info("Add new aminity");
 				addAmminity();
 				break;
 
@@ -39,10 +53,12 @@ public class AmminitiesOperatin extends ClassAndObject {
 				break;
 
 			case 3:
+				logger.info("updated aminity successfully...");
 				updateAmminity();
 				break;
 
 			case 4:
+				logger.info("aminity is deleted");
 				deleteAmminity();
 				break;
 			case 5:

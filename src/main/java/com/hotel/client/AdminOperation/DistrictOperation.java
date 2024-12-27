@@ -2,6 +2,9 @@ package com.hotel.client.AdminOperation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.DistrictEntity;
@@ -10,7 +13,17 @@ import com.hotel.client.entity.StateEntity;
 public class DistrictOperation extends ClassAndObject {
 	
 	static DistrictEntity de = new DistrictEntity();
-	
+	static Logger logger = Logger.getLogger("CityOperation");
+
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 
 	public DistrictOperation() {
 
@@ -67,14 +80,17 @@ public class DistrictOperation extends ClassAndObject {
 				else {
 					System.err.println("You enter the erong state name");
 				}
+				logger.info("district is added");
 				break;
 			case 2:
 				showDistrict();
 				break;
 			case 3:
+				logger.info("updated DIstrict");
 				updateDistrict();
 				break;
 			case 4:
+				logger.info("distrit is deleted");
 				deleteDist();
 				break;
 			case 5:

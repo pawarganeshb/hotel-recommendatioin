@@ -2,6 +2,9 @@ package com.hotel.client.AdminOperation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.CityEntity;
@@ -11,7 +14,18 @@ import com.hotel.client.entity.StateEntity;
 
 public class HotelOperation extends ClassAndObject {
 	
+	static DistrictEntity de = new DistrictEntity();
+	static Logger logger = Logger.getLogger("HotelOperation");
 
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 	public HotelOperation() {
 
 		int choice = 0;
@@ -28,15 +42,18 @@ public class HotelOperation extends ClassAndObject {
 			sc.nextLine();
 			switch (choice) {
 			case 1:
+				logger.info("new hotel is added");
 				addHotel();
 				break;
 			case 2:
 				showHotesl();
 				break;
 			case 3:
+				logger.info("hotel is updated");
 				updateHotel();
 				break;
 			case 4:
+				logger.info("hotel is deleted");
 				deleteHotel();
 				break;
 			case 5:
@@ -84,7 +101,7 @@ public class HotelOperation extends ClassAndObject {
 						System.out.println("city_id \t city_Name");
 						cities.forEach((t) -> System.out.println(t.getCityId() + "\t\t" + t.getCityName()));
 
-						System.out.println("Eneter city name to add hotel");
+						System.out.println("Enter city name to add hotel");
 						String cityNamw = sc.nextLine();
 						ce.setCityName(cityNamw);
 						int cityId = cs.getCityIdByName(ce);
@@ -117,14 +134,14 @@ public class HotelOperation extends ClassAndObject {
 
 									if (hs.insertIntoHotel(he)) {
 										String msg = "";
-										System.out.println("Do you want to add aminity");
-										System.out.println("Enter yes or no");
+										System.out.println("Do you want to add aminity?(yes/no)");
+										
 										msg = sc.nextLine().toLowerCase();
 										if (msg.equals("yes")) {
 											do {
 												int hid = hs.hotelId();
 												AmminitiesOperatin.showAmminities();
-												System.out.println("Eneter the Aminity Id to add");
+												System.out.println("Enter the Aminity Id to add");
 												int ami = sc.nextInt();
 												sc.nextLine();
 												if (ams.checkAminity(ami)) {
@@ -201,7 +218,7 @@ public class HotelOperation extends ClassAndObject {
 						System.out.println("city_id \t city_Name");
 						cities.forEach((t) -> System.out.println(t.getCityId() + "\t\t" + t.getCityName()));
 
-						System.out.println("Eneter city name to see hotel");
+						System.out.println("Enter city name to see hotel");
 						String cityNamw = sc.nextLine();
 						ce.setCityName(cityNamw);
 						int cityId = cs.getCityIdByName(ce);
@@ -272,7 +289,7 @@ public class HotelOperation extends ClassAndObject {
 						System.out.println("city_id \t city_Name");
 						cities.forEach((t) -> System.out.println(t.getCityId() + "\t\t" + t.getCityName()));
 
-						System.out.println("Eneter city name to see hotel");
+						System.out.println("Enter city name to see hotel");
 						String cityNamw = sc.nextLine();
 						ce.setCityName(cityNamw);
 						int cityId = cs.getCityIdByName(ce);

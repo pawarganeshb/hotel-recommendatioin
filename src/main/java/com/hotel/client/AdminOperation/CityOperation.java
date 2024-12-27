@@ -2,6 +2,9 @@ package com.hotel.client.AdminOperation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.CityEntity;
@@ -9,7 +12,17 @@ import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.StateEntity;
 
 public class CityOperation extends ClassAndObject {
-	
+	static Logger logger = Logger.getLogger("CityOperation");
+
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 	public CityOperation() {
 		int choice = 0;
 		do {
@@ -25,15 +38,18 @@ public class CityOperation extends ClassAndObject {
 			sc.nextLine();
 			switch (choice) {
 			case 1:
+				logger.info("new city is added");
 				addCity();
 				break;
 			case 2:
 				showCities();
 				break;
 			case 3:
+				logger.info("city is updated");
 				updateCity();
 				break;
 			case 4:
+				logger.info("city is deleted");
 				deleteCity();
 				break;
 			case 5:

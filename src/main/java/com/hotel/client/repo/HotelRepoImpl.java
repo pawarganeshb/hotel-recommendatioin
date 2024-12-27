@@ -258,3 +258,4 @@ public class HotelRepoImpl extends Database_Connection implements IHotelRepo {
 	}
 
 }
+

@@ -3,6 +3,9 @@ package com.hotel.client;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.AdminOperation.AccommodationOperation;
 import com.hotel.client.AdminOperation.AmminitiesOperatin;
@@ -17,8 +20,19 @@ import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.RecomendationEntity;
 import com.hotel.client.entity.StateEntity;
 
+
 public class HotelApp extends ClassAndObject {
-	
+	static Logger logger = Logger.getLogger("HotelApp");
+
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 
 	public static void main(String[] args) {
 
@@ -43,6 +57,7 @@ public class HotelApp extends ClassAndObject {
 				le.setPassword(password);
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("Admin")) {
+					logger.info(le.getName()+" login to admine panal");
 					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 					System.out.println();
 					int choice = 0;
@@ -111,7 +126,7 @@ public class HotelApp extends ClassAndObject {
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("User")) {
 					if (le.getStatus().equals("open")) {
-
+						logger.info(le.getName()+" login in user pannel");
 						System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 						System.out.println();
 						do {
@@ -132,6 +147,7 @@ public class HotelApp extends ClassAndObject {
 								System.out.println("");
 								break;
 							case 3:
+								logger.info(le.getName()+" search hotels");
 								serachHotel();
 								break;
 							case 4:
@@ -150,6 +166,7 @@ public class HotelApp extends ClassAndObject {
 				}
 				break;
 			case 3:
+				logger.info("New registration");
 				loginForNewUser();
 				break;
 			case 4:
@@ -188,6 +205,7 @@ public class HotelApp extends ClassAndObject {
 					String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!"
 							: "Unable to registration!";
 					System.out.println(msg);
+					logger.info(msg);
 				} else {
 					System.out.println("Mishmatch the password or length is greater than 4");
 				}
@@ -262,6 +280,7 @@ public class HotelApp extends ClassAndObject {
 	}
 
 	public static void serachHotel() {
+		
 		List<StateEntity> al = new ArrayList<StateEntity>();
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
@@ -363,11 +382,11 @@ public class HotelApp extends ClassAndObject {
 										System.out.println("Exiting...");
 										Thread.sleep(2000);
 									} catch (IOException e) {
-										// TODO Auto-generated catch block
+										// 
 										e.printStackTrace();
 									} // Waits for the user to press any key
 									catch (InterruptedException e) {
-										// TODO Auto-generated catch block
+										// 
 										e.printStackTrace();
 									}
 								} else {
@@ -402,11 +421,11 @@ public class HotelApp extends ClassAndObject {
 										System.out.println("Exiting...");
 										Thread.sleep(3000);
 									} catch (IOException e) {
-										// TODO Auto-generated catch block
+										// 
 										e.printStackTrace();
 									} // Waits for the user to press any key
 									catch (InterruptedException e) {
-										// TODO Auto-generated catch block
+										// 
 										e.printStackTrace();
 									}
 								}

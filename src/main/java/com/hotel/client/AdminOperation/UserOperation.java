@@ -3,7 +3,11 @@ package com.hotel.client.AdminOperation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
+import org.apache.log4j.PropertyConfigurator;
+
+import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.LoginEntity;
 import com.hotel.client.service.LoginServiceImpl;
 
@@ -11,6 +15,19 @@ public class UserOperation {
 	static Scanner sc=new Scanner(System.in);
 	static LoginServiceImpl le=new LoginServiceImpl();
 	static LoginEntity l=new LoginEntity();
+	static DistrictEntity de = new DistrictEntity();
+	static Logger logger = Logger.getLogger("UserOperation");
+
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+           
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 	public UserOperation() {
 		
 		int choice = 0;
@@ -26,12 +43,15 @@ public class UserOperation {
 			sc.nextLine();
 			switch (choice) {
 			case 1:
+				logger.info("admine see all users");
 				showAllUser();
 				break;
 			case 2:
+				logger.info("admine block user");
 				blockUser();
 				break;
 			case 3:
+				logger.info("amine unblock the user");
 				unBlockUser();
 				break;
 			case 4:
