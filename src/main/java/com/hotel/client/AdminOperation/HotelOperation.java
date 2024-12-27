@@ -2,24 +2,12 @@ package com.hotel.client.AdminOperation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.HotelEntity;
 import com.hotel.client.entity.StateEntity;
-import com.hotel.client.service.AccommodationServiceImple;
-import com.hotel.client.service.AmminitiesServiceImple;
-import com.hotel.client.service.CityServiceImple;
-import com.hotel.client.service.DistrictServiceImpl;
-import com.hotel.client.service.HotelServiceImpl;
-import com.hotel.client.service.IAccommodationService;
-import com.hotel.client.service.IAmminitiesService;
-import com.hotel.client.service.ICityService;
-import com.hotel.client.service.IHotelService;
-import com.hotel.client.service.IStateServices;
-import com.hotel.client.service.StateServices;
 
 public class HotelOperation extends ClassAndObject {
 	

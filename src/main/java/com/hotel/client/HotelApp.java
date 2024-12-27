@@ -336,7 +336,7 @@ public class HotelApp extends ClassAndObject {
 									List<RecomendationEntity> recommendations = rs.recommendHotels(userPreference,
 											hotels);
 									System.out.println(
-											"****************************** Hotels *****************************************");
+											"****************************** Recommended Hotels *****************************************");
 									recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
 											+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
 											+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
@@ -349,7 +349,7 @@ public class HotelApp extends ClassAndObject {
 										hotels = rs.showAllHotelWithoutAcc(lid, amId);
 										recommendations = rs.recommendHotels(userPreference, hotels);
 										System.out.println(
-												"****************************** Hotels *****************************************");
+												"****************************** Recommended Hotels *****************************************");
 										recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
 												+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
 												+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
@@ -376,7 +376,7 @@ public class HotelApp extends ClassAndObject {
 									List<RecomendationEntity> recommendations = rs.recommendHotels(userPreference,
 											hotels);
 									System.out.println(
-											"****************************** Hotels *****************************************");
+											"****************************** Recommended Hotels *****************************************");
 									recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
 											+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
 											+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
@@ -389,7 +389,7 @@ public class HotelApp extends ClassAndObject {
 										hotels = rs.showAllHotelWithoutAcc(lid, amId);
 										recommendations = rs.recommendHotels(userPreference, hotels);
 										System.out.println(
-												"****************************** Hotels *****************************************");
+												"****************************** Recommended Hotels *****************************************");
 										recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
 												+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
 												+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
