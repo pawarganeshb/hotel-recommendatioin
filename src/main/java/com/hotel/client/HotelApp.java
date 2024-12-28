@@ -35,7 +35,7 @@ public class HotelApp extends ClassAndObject {
     }
 
 	public static void main(String[] args) {
-
+		System.out.println("");
 		System.out.println("**************Welcome To Our System***************");
 		do {
 			int choise = 0;
@@ -58,6 +58,7 @@ public class HotelApp extends ClassAndObject {
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("Admin")) {
 					logger.info(le.getName()+" login to admine panal");
+					System.out.println("");
 					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 					System.out.println();
 					int choice = 0;
@@ -127,6 +128,7 @@ public class HotelApp extends ClassAndObject {
 				if (le.getType().equals("User")) {
 					if (le.getStatus().equals("open")) {
 						logger.info(le.getName()+" login in user pannel");
+						System.out.println("");
 						System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 						System.out.println();
 						do {
@@ -356,11 +358,11 @@ public class HotelApp extends ClassAndObject {
 											hotels);
 									System.out.println(
 											"****************************** Recommended Hotels *****************************************");
-									recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
-											+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
-											+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
+									recommendations.forEach(hotel -> System.out.println("Id = "+hotel.getH_id() + "\t Hotel Name = "
+											+ hotel.getH_name() + "\t Address = " + hotel.getH_add() + "\t Type = " + hotel.getH_type()
+											+ "\t price = " + hotel.getPrice() + "\nAmenities = "
 											+ hotel.getAminity()
-											+ "\n----------------------------------------------------------------------------------------"));
+											+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 									System.out.println(
 											"Do you want Some other Suggestion but hotel type is differnet? (yes/no):");
 									response = sc.nextLine().toLowerCase();
@@ -369,11 +371,11 @@ public class HotelApp extends ClassAndObject {
 										recommendations = rs.recommendHotels(userPreference, hotels);
 										System.out.println(
 												"****************************** Recommended Hotels *****************************************");
-										recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
-												+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
-												+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
+										recommendations.forEach(hotel -> System.out.println("Id = "+hotel.getH_id() + "\t Hotel Name = "
+												+ hotel.getH_name() + "\t Address = " + hotel.getH_add() + "\t Type = " + hotel.getH_type()
+												+ "\t price = " + hotel.getPrice() + "\nAmenities = "
 												+ hotel.getAminity()
-												+ "\n----------------------------------------------------------------------------------------"));
+												+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 										
 										}
 									try {
@@ -396,11 +398,11 @@ public class HotelApp extends ClassAndObject {
 											hotels);
 									System.out.println(
 											"****************************** Recommended Hotels *****************************************");
-									recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
-											+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
-											+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
+									recommendations.forEach(hotel -> System.out.println("Id = "+hotel.getH_id() + "\t Hotel Name = "
+											+ hotel.getH_name() + "\t Address = " + hotel.getH_add() + "\t Type = " + hotel.getH_type()
+											+ "\t price = " + hotel.getPrice() + "\nAmenities = "
 											+ hotel.getAminity()
-											+ "\n----------------------------------------------------------------------------------------"));
+											+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 									System.out.println(
 											"Do you want Some other Suggestion but hotel type is differnet? (yes/no):");
 									response = sc.nextLine().toLowerCase();
@@ -409,11 +411,11 @@ public class HotelApp extends ClassAndObject {
 										recommendations = rs.recommendHotels(userPreference, hotels);
 										System.out.println(
 												"****************************** Recommended Hotels *****************************************");
-										recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
-												+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
-												+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
+										recommendations.forEach(hotel -> System.out.println("Id = "+hotel.getH_id() + "\t Hotel Name = "
+												+ hotel.getH_name() + "\t Address = " + hotel.getH_add() + "\t Type = " + hotel.getH_type()
+												+ "\t price = " + hotel.getPrice() + "\nAmenities = "
 												+ hotel.getAminity()
-												+ "\n----------------------------------------------------------------------------------------"));
+												+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 									}
 									System.out.println("Press any key to exit...");
 									try {
