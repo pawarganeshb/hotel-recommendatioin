@@ -3,8 +3,8 @@ package com.hotel.client;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.AdminOperation.AccommodationOperation;
@@ -22,7 +22,7 @@ import com.hotel.client.entity.StateEntity;
 
 
 public class HotelApp extends ClassAndObject {
-	static Logger logger = Logger.getAnonymousLogger();
+	static Logger logger = Logger.getLogger(HotelApp.class);
 
     // Static block to configure the logger with the properties file
     static {

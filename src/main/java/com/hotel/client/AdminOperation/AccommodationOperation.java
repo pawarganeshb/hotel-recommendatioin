@@ -3,8 +3,7 @@ package com.hotel.client.AdminOperation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
-
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.config.ClassAndObject;
@@ -15,7 +14,7 @@ import com.hotel.client.service.IAccommodationService;
 public class AccommodationOperation extends ClassAndObject {
 	static Scanner sc = new Scanner(System.in);
 	static IAccommodationService accommodationService = new AccommodationServiceImple();
-	static Logger logger = Logger.getLogger("AccommodationOperation");
+	static Logger logger = Logger.getLogger(AccommodationOperation.class);
 
     // Static block to configure the logger with the properties file
     static {

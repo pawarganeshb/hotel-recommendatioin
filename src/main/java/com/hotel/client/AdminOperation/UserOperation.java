@@ -3,8 +3,7 @@ package com.hotel.client.AdminOperation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
-
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.entity.DistrictEntity;
@@ -16,7 +15,7 @@ public class UserOperation {
 	static LoginServiceImpl le=new LoginServiceImpl();
 	static LoginEntity l=new LoginEntity();
 	static DistrictEntity de = new DistrictEntity();
-	static Logger logger = Logger.getLogger("UserOperation");
+	static Logger logger = Logger.getLogger(UserOperation.class);
 
     // Static block to configure the logger with the properties file
     static {

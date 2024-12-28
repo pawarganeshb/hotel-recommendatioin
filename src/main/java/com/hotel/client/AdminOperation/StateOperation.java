@@ -3,8 +3,7 @@ package com.hotel.client.AdminOperation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
-
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.entity.DistrictEntity;
@@ -17,7 +16,7 @@ public class StateOperation {
 	static IStateServices iStateServices = new StateServices();
 	static StateEntity se = new StateEntity();
 	static DistrictEntity de = new DistrictEntity();
-	static Logger logger = Logger.getLogger("StateOperation");
+	static Logger logger = Logger.getLogger(StateOperation.class);
     // Static block to configure the logger with the properties file
     static {
         try {
@@ -76,7 +75,7 @@ public class StateOperation {
 					logger.info("satate is updated");
 				} else {
 					System.err.println("Id is not found");
-					logger.warning("somthing is problematic while update");
+					logger.warn("somthing is problematic while update");
 					
 				}
 				break;
@@ -89,7 +88,7 @@ public class StateOperation {
 					logger.info("satate is deleted");
 				} else {
 					System.err.println("Id is not found");
-					logger.warning("state is not deleted");
+					logger.warn("state is not deleted");
 				}
 				break;
 			case 5:

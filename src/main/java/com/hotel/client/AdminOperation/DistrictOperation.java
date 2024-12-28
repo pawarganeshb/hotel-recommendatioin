@@ -2,8 +2,7 @@ package com.hotel.client.AdminOperation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
-
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.hotel.client.config.ClassAndObject;
@@ -13,7 +12,7 @@ import com.hotel.client.entity.StateEntity;
 public class DistrictOperation extends ClassAndObject {
 	
 	static DistrictEntity de = new DistrictEntity();
-	static Logger logger = Logger.getLogger("DistrictOperation");
+	static Logger logger = Logger.getLogger(DistrictOperation.class);
 
     // Static block to configure the logger with the properties file
     static {
