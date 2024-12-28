@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.HotelEntity;
+import com.hotel.client.entity.RecomendationEntity;
 import com.hotel.client.repo.HotelRepoImpl;
 import com.hotel.client.repo.IHotelRepo;
 
@@ -63,6 +64,11 @@ public class HotelServiceImpl implements IHotelService {
 	public boolean updateHotelPrice(int price, int hid) {
 		// TODO Auto-generated method stub
 		return hs.updateHotelPrice(price, hid);
+	}
+	@Override
+	public List<RecomendationEntity> showAllHotelWithAcc(int l_id, int am_id,int min,int max) {
+		// TODO Auto-generated method stub
+		return hs.showAllHotelWithAcc(l_id, am_id,min,max);
 	}
 
 }

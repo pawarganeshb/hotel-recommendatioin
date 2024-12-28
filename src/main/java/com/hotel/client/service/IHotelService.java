@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.HotelEntity;
+import com.hotel.client.entity.RecomendationEntity;
 
 public interface IHotelService {
 
@@ -19,4 +20,7 @@ public interface IHotelService {
 	public boolean updateHotelName(String name,int hid);
 	public boolean updateHotelContatc(String contact,int hid);
 	public boolean updateHotelPrice(int price,int hid);
+	
+	
+	public List<RecomendationEntity> showAllHotelWithAcc(int l_id,int am_id,int min,int max); 
 }

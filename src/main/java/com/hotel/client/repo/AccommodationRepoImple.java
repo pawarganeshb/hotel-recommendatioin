@@ -25,7 +25,7 @@ public class AccommodationRepoImple extends Database_Connection implements IAcco
 
 	@Override
 	public List<AccommodationEntity> showAccommodation() {
-		final String SQL = "SELECT * FROM accommodation";
+		final String SQL = "SELECT * FROM accommodation order by a_id";
 		List<AccommodationEntity> accommodations = new ArrayList<>();
 
 		try {

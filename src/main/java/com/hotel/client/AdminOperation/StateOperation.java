@@ -3,7 +3,10 @@ package com.hotel.client.AdminOperation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
+import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.StateEntity;
 import com.hotel.client.service.IStateServices;
 import com.hotel.client.service.StateServices;
@@ -12,6 +15,17 @@ public class StateOperation {
 	static Scanner sc=new Scanner(System.in);
 	static IStateServices iStateServices = new StateServices();
 	static StateEntity se = new StateEntity();
+	static DistrictEntity de = new DistrictEntity();
+	static Logger logger = Logger.getLogger(StateOperation.class);
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 	public StateOperation() {
 		
 		int choice=0;
@@ -35,8 +49,10 @@ public class StateOperation {
 				boolean check = iStateServices.addState(se);
 				if (check) {
 					System.out.println("State is Added Successfully......");
+					logger.info("state id added");
 				} else {
 					System.out.println("Something is not write....");
+					logger.info("not inserted data");
 				}
 				break;
 			case 2:
@@ -56,8 +72,11 @@ public class StateOperation {
 				check = iStateServices.updateState(se);
 				if (check) {
 					System.out.println("State Upadated");
+					logger.info("satate is updated");
 				} else {
 					System.err.println("Id is not found");
+					logger.warn("somthing is problematic while update");
+					
 				}
 				break;
 			case 4:
@@ -66,8 +85,10 @@ public class StateOperation {
 				check = iStateServices.deleteState(s_id);
 				if (check) {
 					System.out.println("State is deleted successfully...");
+					logger.info("satate is deleted");
 				} else {
 					System.err.println("Id is not found");
+					logger.warn("state is not deleted");
 				}
 				break;
 			case 5:

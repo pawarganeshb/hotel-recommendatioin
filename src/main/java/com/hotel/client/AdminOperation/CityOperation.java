@@ -2,24 +2,26 @@ package com.hotel.client.AdminOperation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
+import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.CityEntity;
 import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.StateEntity;
-import com.hotel.client.service.CityServiceImple;
-import com.hotel.client.service.DistrictServiceImpl;
-import com.hotel.client.service.ICityService;
-import com.hotel.client.service.IStateServices;
-import com.hotel.client.service.StateServices;
 
-public class CityOperation {
-	static IStateServices iStateServices = new StateServices();
-	static DistrictServiceImpl districtService = new DistrictServiceImpl();
-	static Scanner sc = new Scanner(System.in);
-	static ICityService cs = new CityServiceImple();
-	static CityEntity ce = new CityEntity();
+public class CityOperation extends ClassAndObject {
+	static Logger logger = Logger.getLogger(CityOperation.class);
 
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 	public CityOperation() {
 		int choice = 0;
 		do {
@@ -35,15 +37,18 @@ public class CityOperation {
 			sc.nextLine();
 			switch (choice) {
 			case 1:
+				logger.info("new city is added");
 				addCity();
 				break;
 			case 2:
 				showCities();
 				break;
 			case 3:
+				logger.info("city is updated");
 				updateCity();
 				break;
 			case 4:
+				logger.info("city is deleted");
 				deleteCity();
 				break;
 			case 5:
@@ -88,6 +93,7 @@ public class CityOperation {
 				int cityId = cs.getCityIdByName(ce);
 				ce.setCityId(cityId);
 				if (cityId == 0) {
+					
 					if (cs.insertDataWithProcedure(ce)) {
 						System.out.println("data is filled");
 					} else {
