@@ -3,16 +3,30 @@ package com.hotel.client.AdminOperation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
+import com.hotel.client.config.ClassAndObject;
 import com.hotel.client.entity.AccommodationEntity;
 import com.hotel.client.service.AccommodationServiceImple;
 import com.hotel.client.service.IAccommodationService;
 
-public class AccommodationOperation {
+public class AccommodationOperation extends ClassAndObject {
 	static Scanner sc = new Scanner(System.in);
 	static IAccommodationService accommodationService = new AccommodationServiceImple();
+	static Logger logger = Logger.getLogger(AccommodationOperation.class);
 
+    // Static block to configure the logger with the properties file
+    static {
+        try {
+            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+            
+        } catch (Exception e) {
+            System.err.println("Failed to configure logger: " + e.getMessage());
+        }
+    }
 	public AccommodationOperation() {
+		
 		int choice=0;
 		do {
 			System.out.println();
@@ -29,15 +43,18 @@ public class AccommodationOperation {
 
 			switch (choice) {
 			case 1:
+				logger.info("Accommodation added");
 				addAccommodation();
 				break;
 			case 2:
 				showAccommodation();
 				break;
 			case 3:
+				logger.info("updated Accommodation successfully...");
 				updateAccommodation();
 				break;
 			case 4:
+				logger.info("Deleted Accommodation..");
 				deleteAccommodation();
 				break;
 			case 5:
@@ -60,6 +77,7 @@ public class AccommodationOperation {
 		AccommodationEntity entity = new AccommodationEntity(null, accommodationType);
 		System.out.println(accommodationService.addAccommodation(entity) ? "Accommodation Added Successfully!"
 				: "Unable to Add Accommodation");
+		
 	}
 
 	public static void showAccommodation() {

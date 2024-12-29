@@ -13,4 +13,5 @@ public class AmminitiesEntity extends AccommodationEntity {
 	private Integer aminitiesID;
 	private String amminitiesName;
 	private double ammnitiesPrice;
+	 
 }
