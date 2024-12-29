@@ -158,10 +158,10 @@ public class DistrictOperation extends ClassAndObject {
 				distId = districtService.getDistIdByName(newdist);
 				de.setDistId(distId);
 //				System.out.println(distId + "\t" + stateId);
-				System.out.println(flag);
+//				System.out.println(flag);
 				if (flag) {
 					flag = districtService.CheckDistricAndStatePresent(de);
-					System.out.println(flag);
+//					System.out.println(flag);
 					if (flag) {
 						flag = districtService.insertDataInJoin(de);
 						System.out.println(flag);

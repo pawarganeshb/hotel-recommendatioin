@@ -20,22 +20,22 @@ import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.RecomendationEntity;
 import com.hotel.client.entity.StateEntity;
 
-
 public class HotelApp extends ClassAndObject {
 	static Logger logger = Logger.getLogger(HotelApp.class);
 
-    // Static block to configure the logger with the properties file
-    static {
-        try {
-            PropertyConfigurator.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
-            logger.info("working");
-        } catch (Exception e) {
-            System.err.println("Failed to configure logger: " + e.getMessage());
-        }
-    }
+	// Static block to configure the logger with the properties file
+	static {
+		try {
+			PropertyConfigurator
+					.configure("E:\\workspace\\Core Java\\hotel-recommendatioin\\src\\main\\resources\\log.properties");
+			logger.info("working");
+		} catch (Exception e) {
+			System.err.println("Failed to configure logger: " + e.getMessage());
+		}
+	}
 
 	public static void main(String[] args) {
-
+		System.out.println("");
 		System.out.println("**************Welcome To Our System***************");
 		do {
 			int choise = 0;
@@ -57,7 +57,8 @@ public class HotelApp extends ClassAndObject {
 				le.setPassword(password);
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("Admin")) {
-					logger.info(le.getName()+" login to admine panal");
+					logger.info(le.getName() + " login to admine panal");
+					System.out.println("");
 					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 					System.out.println();
 					int choice = 0;
@@ -126,14 +127,17 @@ public class HotelApp extends ClassAndObject {
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("User")) {
 					if (le.getStatus().equals("open")) {
-						logger.info(le.getName()+" login in user pannel");
+						logger.info(le.getName() + " login in user pannel");
+						System.out.println("");
 						System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
 						System.out.println();
 						do {
+							System.out.println("");
 							System.out.println("1) View profile");
 							System.out.println("2) Update profile");
 							System.out.println("3) Find hotels");
 							System.out.println("4) Exit");
+							System.out.println("Enter your choice");
 							System.out.println();
 							choise = sc.nextInt();
 							sc.nextLine();
@@ -147,7 +151,7 @@ public class HotelApp extends ClassAndObject {
 								System.out.println("");
 								break;
 							case 3:
-								logger.info(le.getName()+" search hotels");
+								logger.info(le.getName() + " search hotels");
 								serachHotel();
 								break;
 							case 4:
@@ -280,7 +284,7 @@ public class HotelApp extends ClassAndObject {
 	}
 
 	public static void serachHotel() {
-		
+
 		List<StateEntity> al = new ArrayList<StateEntity>();
 		al = iStateServices.getAllStates();
 		System.out.println("*****************STATES********************");
@@ -356,11 +360,11 @@ public class HotelApp extends ClassAndObject {
 											hotels);
 									System.out.println(
 											"****************************** Recommended Hotels *****************************************");
-									recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
-											+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
-											+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
-											+ hotel.getAminity()
-											+ "\n----------------------------------------------------------------------------------------"));
+									recommendations.forEach(hotel -> System.out.println("Id = " + hotel.getH_id()
+											+ "\t Hotel Name = " + hotel.getH_name() + "\t Address = "
+											+ hotel.getH_add() + "\t Type = " + hotel.getH_type() + "\t price = "
+											+ hotel.getPrice() + "\nAmenities = " + hotel.getAminity()
+											+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 									System.out.println(
 											"Do you want Some other Suggestion but hotel type is differnet? (yes/no):");
 									response = sc.nextLine().toLowerCase();
@@ -369,13 +373,13 @@ public class HotelApp extends ClassAndObject {
 										recommendations = rs.recommendHotels(userPreference, hotels);
 										System.out.println(
 												"****************************** Recommended Hotels *****************************************");
-										recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
-												+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
-												+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
-												+ hotel.getAminity()
-												+ "\n----------------------------------------------------------------------------------------"));
-										
-										}
+										recommendations.forEach(hotel -> System.out.println("Id = " + hotel.getH_id()
+												+ "\t Hotel Name = " + hotel.getH_name() + "\t Address = "
+												+ hotel.getH_add() + "\t Type = " + hotel.getH_type() + "\t price = "
+												+ hotel.getPrice() + "\nAmenities = " + hotel.getAminity()
+												+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
+
+									}
 									try {
 										System.out.println("Press any key to exit...");
 										System.in.read();
@@ -386,7 +390,7 @@ public class HotelApp extends ClassAndObject {
 										e.printStackTrace();
 									} // Waits for the user to press any key
 									catch (InterruptedException e) {
-										// 
+										//
 										e.printStackTrace();
 									}
 								} else {
@@ -396,11 +400,11 @@ public class HotelApp extends ClassAndObject {
 											hotels);
 									System.out.println(
 											"****************************** Recommended Hotels *****************************************");
-									recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
-											+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
-											+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
-											+ hotel.getAminity()
-											+ "\n----------------------------------------------------------------------------------------"));
+									recommendations.forEach(hotel -> System.out.println("Id = " + hotel.getH_id()
+											+ "\t Hotel Name = " + hotel.getH_name() + "\t Address = "
+											+ hotel.getH_add() + "\t Type = " + hotel.getH_type() + "\t price = "
+											+ hotel.getPrice() + "\nAmenities = " + hotel.getAminity()
+											+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 									System.out.println(
 											"Do you want Some other Suggestion but hotel type is differnet? (yes/no):");
 									response = sc.nextLine().toLowerCase();
@@ -409,11 +413,11 @@ public class HotelApp extends ClassAndObject {
 										recommendations = rs.recommendHotels(userPreference, hotels);
 										System.out.println(
 												"****************************** Recommended Hotels *****************************************");
-										recommendations.forEach(hotel -> System.out.println(hotel.getH_id() + "\t"
-												+ hotel.getH_name() + "\t" + hotel.getH_add() + "\t" + hotel.getH_type()
-												+ "\t Total price = " + hotel.getPrice() + "\nAmenities = "
-												+ hotel.getAminity()
-												+ "\n----------------------------------------------------------------------------------------"));
+										recommendations.forEach(hotel -> System.out.println("Id = " + hotel.getH_id()
+												+ "\t Hotel Name = " + hotel.getH_name() + "\t Address = "
+												+ hotel.getH_add() + "\t Type = " + hotel.getH_type() + "\t price = "
+												+ hotel.getPrice() + "\nAmenities = " + hotel.getAminity()
+												+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 									}
 									System.out.println("Press any key to exit...");
 									try {
@@ -421,11 +425,11 @@ public class HotelApp extends ClassAndObject {
 										System.out.println("Exiting...");
 										Thread.sleep(3000);
 									} catch (IOException e) {
-										// 
+										//
 										e.printStackTrace();
 									} // Waits for the user to press any key
 									catch (InterruptedException e) {
-										// 
+										//
 										e.printStackTrace();
 									}
 								}

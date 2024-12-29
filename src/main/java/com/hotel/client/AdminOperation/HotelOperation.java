@@ -232,10 +232,10 @@ public class HotelOperation extends ClassAndObject {
 								System.out.println(
 										"******************************Hotels*****************************************");
 								System.out.println("");
-								hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
-										+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\t total price = "
+								hotels.forEach((t) -> System.out.println("Id = "+t.getHid() + "\t Hotel Name=" + t.getHname() + "\t Address = "
+										+ t.getHaddress() + "\t  Type = " + t.getTypeOfAccommodation() + "\t price = "
 										+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
-										+ "\n----------------------------------------------------------------------------------------"));
+										+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 							} else {
 								System.out.println("their are no hotels");
 							}
@@ -303,19 +303,19 @@ public class HotelOperation extends ClassAndObject {
 								System.out.println(
 										"******************************Hotels*****************************************");
 								System.out.println("");
-								hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
-										+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\ttotal price = "
+								hotels.forEach((t) -> System.out.println("Id = "+t.getHid() + "\t Hotel Name=" + t.getHname() + "\t Address = "
+										+ t.getHaddress() + "\t  Type = " + t.getTypeOfAccommodation() + "\t price = "
 										+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
-										+ "\n----------------------------------------------------------------------------------------"));
+										+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 
 								System.out.println("Enter the hotel name to search hotel");
 								String hotelname = sc.nextLine();
 								hotels = hs.serchHotel(lid, hotelname);
 								if (hotels.size() != 0) {
-									hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
-											+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\ttotal price = "
+									hotels.forEach((t) -> System.out.println("Id = "+t.getHid() + "\t Hotel Name=" + t.getHname() + "\t Address = "
+											+ t.getHaddress() + "\t  Type = " + t.getTypeOfAccommodation() + "\t price = "
 											+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
-											+ "\n----------------------------------------------------------------------------------------"));
+											+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 								} else {
 									System.out.println("search hotel is not found");
 								}
@@ -386,10 +386,10 @@ public class HotelOperation extends ClassAndObject {
 								System.out.println(
 										"******************************Hotels*****************************************");
 								System.out.println("");
-								hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
-										+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\t total price = "
-										+ t.getHprice() + "\nAmenities = " + t.getAmminitiesName()
-										+ "\n----------------------------------------------------------------------------------------"));
+								hotels.forEach((t) -> System.out.println("Id = "+t.getHid() + "\t Hotel Name=" + t.getHname() + "\t Address = "
+										+ t.getHaddress() + "\t  Type = " + t.getTypeOfAccommodation() + "\t price = "
+										+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
+										+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 
 								// Add delete functionality
 								System.out.println("Enter Hotel ID to delete (or press '0' to skip): ");
@@ -467,10 +467,10 @@ public class HotelOperation extends ClassAndObject {
 								System.out.println(
 										"******************************Hotels*****************************************");
 								System.out.println("");
-								hotels.forEach((t) -> System.out.println(t.getHid() + "\t" + t.getHname() + "\t"
-										+ t.getHaddress() + "\t" + t.getTypeOfAccommodation() + "\t total price = "
-										+ t.getHprice() + "\nAmenities = " + t.getAmminitiesName()
-										+ "\n----------------------------------------------------------------------------------------"));
+								hotels.forEach((t) -> System.out.println("Id = "+t.getHid() + "\t Hotel Name=" + t.getHname() + "\t Address = "
+										+ t.getHaddress() + "\t  Type = " + t.getTypeOfAccommodation() + "\t price = "
+										+ t.getHprice() + "\nAminities = " + t.getAmminitiesName()
+										+ "\n--------------------------------------------------------------------------------------------------------------------------------------------"));
 
 								// Add delete functionality
 								System.out.println("Enter the hotel Id to Update hotel");
