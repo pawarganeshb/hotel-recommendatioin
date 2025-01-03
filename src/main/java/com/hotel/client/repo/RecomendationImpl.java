@@ -27,7 +27,7 @@ public class RecomendationImpl extends Database_Connection implements IRecomenda
 				he.setH_type(rs.getString(4));
 				String amenities = rs.getString("aminities");
 				if (amenities == null) {
-					he.setAminity(amenities);
+					he.setAminity("No aminities");
 				} else {
 					he.setAminity(amenities);
 				}
@@ -62,7 +62,7 @@ public class RecomendationImpl extends Database_Connection implements IRecomenda
 				he.setH_type(rs.getString(4));
 				String amenities = rs.getString("aminities");
 				if (amenities == null) {
-					he.setAminity(amenities);
+					he.setAminity("No aminities");
 				} else {
 					he.setAminity(amenities);
 				}
