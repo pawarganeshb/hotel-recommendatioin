@@ -26,8 +26,12 @@ public class AccommodationOperation extends ClassAndObject {
         }
     }
 	public AccommodationOperation() {
+<<<<<<< Updated upstream
 		
 		int choice=0;
+=======
+		int choice = 0;
+>>>>>>> Stashed changes
 		do {
 			System.out.println();
 			System.out.println("1) Add Accommodation.");
@@ -38,7 +42,7 @@ public class AccommodationOperation extends ClassAndObject {
 			System.out.println("6) Exit.");
 
 			System.out.println("Enter your choice: ");
-			 choice = sc.nextInt();
+			choice = sc.nextInt();
 			sc.nextLine();
 
 			switch (choice) {
@@ -62,13 +66,17 @@ public class AccommodationOperation extends ClassAndObject {
 				break;
 			case 6:
 				System.out.println("Exiting...");
-				
+
 				break;
 			default:
 				System.out.println("Invalid Choice!");
 				break;
 			}
+<<<<<<< Updated upstream
 		} while (choice!=6);
+=======
+		} while (choice != 5);
+>>>>>>> Stashed changes
 	}
 
 	private void addAccommodation() {
@@ -82,7 +90,8 @@ public class AccommodationOperation extends ClassAndObject {
 
 	public static void showAccommodation() {
 		System.out.println("********************Accommodarion**************************");
-		accommodationService.showAccommodation().forEach((t)->System.out.println(t.getAccommodationID()+"\t"+t.getTypeOfAccommodation()));
+		accommodationService.showAccommodation()
+				.forEach((t) -> System.out.println(t.getAccommodationID() + "\t" + t.getTypeOfAccommodation()));
 	}
 
 	private void updateAccommodation() {

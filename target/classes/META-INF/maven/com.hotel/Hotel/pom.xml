@@ -25,6 +25,7 @@
 			needed -->
 		</dependency>
 
+<<<<<<< Updated upstream
 		<dependency>
 			<groupId>house</groupId>
 			<artifactId>HousePricePrediction</artifactId>
@@ -32,3 +33,14 @@
 		</dependency>
 	</dependencies>
 </project>
+=======
+	</dependencies>
+</project>
+
+
+<!--<dependency>
+			<groupId>house</groupId>
+			<artifactId>HousePricePrediction</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>-->
+>>>>>>> Stashed changes

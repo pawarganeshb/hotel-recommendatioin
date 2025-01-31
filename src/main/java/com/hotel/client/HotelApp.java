@@ -20,6 +20,7 @@ import com.hotel.client.entity.DistrictEntity;
 import com.hotel.client.entity.RecomendationEntity;
 import com.hotel.client.entity.StateEntity;
 
+<<<<<<< Updated upstream
 public class HotelApp extends ClassAndObject {
 	static Logger logger = Logger.getLogger(HotelApp.class);
 
@@ -33,6 +34,17 @@ public class HotelApp extends ClassAndObject {
 			System.err.println("Failed to configure logger: " + e.getMessage());
 		}
 	}
+=======
+public class HotelApp {
+	static int count = 0;
+	// entity class object
+	static LoginEntity le = new LoginEntity();
+	static StateEntity se = new StateEntity();
+	// Service object
+	static ILoginService iLoginService = new LoginServiceImpl();
+	static IStateServices iStateServices = new StateServices();
+	static Scanner sc = new Scanner(System.in);
+>>>>>>> Stashed changes
 
 	public static void main(String[] args) {
 		System.out.println("");
@@ -83,7 +95,10 @@ public class HotelApp extends ClassAndObject {
 							System.out.println();
 							break;
 						case 3:
+<<<<<<< Updated upstream
 							new CityOperation();
+=======
+>>>>>>> Stashed changes
 							break;
 						case 4:
 							new AccommodationOperation();
@@ -94,6 +109,7 @@ public class HotelApp extends ClassAndObject {
 							System.out.println();
 							break;
 						case 6:
+<<<<<<< Updated upstream
 							new HotelOperation();
 							System.out.println("");
 							break;
@@ -102,13 +118,22 @@ public class HotelApp extends ClassAndObject {
 							System.out.println("");
 							break;
 						case 8:
+=======
+
+							break;
+						case 7:
+>>>>>>> Stashed changes
 
 							break;
 						default:
 							System.out.println("Enter the valid operation...");
 							break;
 						}
+<<<<<<< Updated upstream
 					} while (choice != 8);
+=======
+					} while (choice != 7);
+>>>>>>> Stashed changes
 
 				} else {
 					System.out.println("User Not Found........");
@@ -116,6 +141,10 @@ public class HotelApp extends ClassAndObject {
 				break;
 			case 2:
 				System.out.println("Enter your username");
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 				username = sc.nextLine();
 				System.out.println("Enter your password");
 				password = sc.nextLine();
@@ -126,6 +155,7 @@ public class HotelApp extends ClassAndObject {
 
 				le = iLoginService.checkType(le);
 				if (le.getType().equals("User")) {
+<<<<<<< Updated upstream
 					if (le.getStatus().equals("open")) {
 						logger.info(le.getName() + " login in user pannel");
 						System.out.println("");
@@ -165,6 +195,9 @@ public class HotelApp extends ClassAndObject {
 					} else {
 						System.out.println("user block by admine....");
 					}
+=======
+					System.out.println("**************Welcome " + le.getName().toUpperCase() + "***************");
+>>>>>>> Stashed changes
 				} else {
 					System.out.println("User Not Found........");
 				}
@@ -195,11 +228,19 @@ public class HotelApp extends ClassAndObject {
 			String conatct = sc.nextLine().trim();
 			System.out.println("Enter username");
 			if (conatct.length() == 10) {
+<<<<<<< Updated upstream
 				String username = sc.nextLine().trim();
+=======
+				String username = sc.nextLine();
+>>>>>>> Stashed changes
 				System.out.println("Enter the password");
 				String password = sc.nextLine().trim();
 				System.out.println("Re-Enter the password");
+<<<<<<< Updated upstream
 				String rePassword = sc.nextLine().trim();
+=======
+				String rePassword = sc.nextLine();
+>>>>>>> Stashed changes
 				if (password.equals(rePassword) && password.length() > 4) {
 					le.setConatct_no(conatct);
 					le.setEmail(email);
@@ -209,6 +250,7 @@ public class HotelApp extends ClassAndObject {
 					String msg = iLoginService.isAddNewUser(le) ? "User registration successfuly!"
 							: "Unable to registration!";
 					System.out.println(msg);
+<<<<<<< Updated upstream
 					logger.info(msg);
 				} else {
 					System.out.println("Mishmatch the password or length is greater than 4");
@@ -218,10 +260,21 @@ public class HotelApp extends ClassAndObject {
 			}
 		} else {
 			System.out.println("Enter the valid email that end @gmail.com");
+=======
+				} else {
+					System.err.println("Mishmatch the password or length is greater than 4");
+				}
+			} else {
+				System.err.println("Enter the valid contact number");
+			}
+		} else {
+			System.err.println("Enter the valid email that end @gmail.com");
+>>>>>>> Stashed changes
 		}
 
 	}
 
+<<<<<<< Updated upstream
 	private static void viewProfile(String pas) {
 		le = us.viewProfile(pas);
 		System.out.println("Name = " + le.getName());
@@ -456,4 +509,6 @@ public class HotelApp extends ClassAndObject {
 		}
 
 	}
+=======
+>>>>>>> Stashed changes
 }
